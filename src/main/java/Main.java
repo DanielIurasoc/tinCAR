@@ -1,3 +1,4 @@
+import Services.UserService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,6 +9,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        UserService.loadUsersFromFile();
+
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         primaryStage.setTitle("tinCAR - The place to find your new car");
         primaryStage.setScene(new Scene(root, 800, 500));

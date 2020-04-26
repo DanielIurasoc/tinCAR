@@ -1,10 +1,12 @@
 package Services;
 
+import Exceptions.UsernameOrPasswordDoesNotExistException;
 import Model.User;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.FileUtils;
 
+import javax.jws.soap.SOAPBinding;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -30,7 +32,18 @@ public class UserService {
         users = objectMapper.readValue(USERS_PATH.toFile(), new TypeReference<List<User>>() {
         });
     }
-    public static void encodePasswords() throws Exception {
+
+    public static String checkCredentials(String username, String password) throws UsernameOrPasswordDoesNotExistException {
+        for (User user : users) {
+            if (Objects.equals(username, user.getUsername()))
+                if (Objects.equals(password, user.getPassword()))
+                    return user.getRole();
+                else throw new UsernameOrPasswordDoesNotExistException("Username or password invalid. Please try again !");
+        }
+        throw new UsernameOrPasswordDoesNotExistException("Username or password invalid. Please try again !");
+    }
+
+    /*public static void encodePasswords() throws Exception {
         for(User user : users){
             user.setPassword(encodePassword(user.getUsername(), user.getPassword()));
         }
@@ -38,34 +51,18 @@ public class UserService {
         try{
             loadUsersFromFile();
         }catch(IOException e){throw new Exception("Couldn't read user database");}
-    }
+    }*/
 
-    //0 - user not found, 1 - logged in as user, 2 - logged in as administrator
-    private static int checkCredentials(String username, String password){
-        for (User user : users) {
-            if (Objects.equals(username, user.getUsername()))
-                if (Objects.equals(password, decodePassword(user.getUsername(), user.getPassword())))
-                    if(user.getRole().equals("user"))
-                        return 1;
-                    else if(user.getRole().equals("admin"))
-                        return 2;
-        }
-        return 0;
-    }
-
-    private static void persistUsers() throws Exception {
+    /*private static void persistUsers() throws Exception {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(USERS_PATH.toFile(), users);
         } catch (IOException e) {
             throw new Exception("Couldn't write users!");
         }
-    }
+    }*/
 
-    private static String decodePassword(String salt, String password){
-        return "password";
-    }
-    private static String encodePassword(String salt, String password) {
+    /*private static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));
 
@@ -74,9 +71,9 @@ public class UserService {
         // This is the way a password should be encoded when checking the credentials
         return new String(hashedPassword, StandardCharsets.UTF_8)
                 .replace("\"", ""); //to be able to save in JSON format
-    }
+    }*/
 
-    private static MessageDigest getMessageDigest() {
+    /*private static MessageDigest getMessageDigest() {
         MessageDigest md;
         try {
             md = MessageDigest.getInstance("SHA-512");
@@ -84,6 +81,6 @@ public class UserService {
             throw new IllegalStateException("SHA-512 does not exist!");
         }
         return md;
-    }
+    }*/
 
 }
