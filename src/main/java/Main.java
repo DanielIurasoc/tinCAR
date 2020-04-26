@@ -11,7 +11,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         UserService.loadUsersFromFile();
-
+        //UserService.printUsers();
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         primaryStage.setTitle("tinCAR - The place to find your new car");
         primaryStage.setScene(new Scene(root, 800, 500));

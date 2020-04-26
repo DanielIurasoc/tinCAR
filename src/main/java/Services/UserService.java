@@ -33,6 +33,12 @@ public class UserService {
         });
     }
 
+    public static void printUsers(){
+        for(User user : users){
+            System.out.println(user.getUsername() + " " + user.getPassword());
+        }
+    }
+
     public static String checkCredentials(String username, String password) throws UsernameOrPasswordDoesNotExistException {
         for (User user : users) {
             if (Objects.equals(username, user.getUsername()))

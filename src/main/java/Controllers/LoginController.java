@@ -7,9 +7,11 @@ import javafx.scene.text.Text;
 import Exceptions.UsernameOrPasswordDoesNotExistException;
 import Services.*;
 
+
 public class LoginController {
 
     @FXML
+    //private TextField loginMessage;
     private Text loginMessage;
     @FXML
     private PasswordField passwordField;
@@ -20,7 +22,8 @@ public class LoginController {
     public void handleLoginAction() {
         try {
             String role = UserService.checkCredentials(usernameField.getText(), passwordField.getText());
-            loginMessage.setText(String.format("Logged in as %s", role));
+            loginMessage.setText(String.format("Logged in as %s",  role));
+            //loginMessage.setText("Logged in as " +  role);
         } catch (UsernameOrPasswordDoesNotExistException e) {
             loginMessage.setText(e.getMessage());
         }

@@ -3,6 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
 
 <SplitPane dividerPositions="0.298" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="661.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
     <items>
@@ -19,8 +20,9 @@
                         <InnerShadow />
                     </effect>
                 </Button>
-            <TextField fx:id="loginMessage" editable="true" layoutX="205.0" layoutY="412.0" prefHeight="26.0" prefWidth="245.0" />
-            </AnchorPane>
+            <!--<TextField fx:id="loginMessage" editable="true" layoutX="205.0" layoutY="412.0" prefHeight="26.0" prefWidth="245.0" />-->
+            <Text fx:id="loginMessage" layoutX="205.0" layoutY="412.0"/>
+        </AnchorPane>
     </items>
     <effect>
         <Blend />
