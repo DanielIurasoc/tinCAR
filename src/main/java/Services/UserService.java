@@ -2,35 +2,37 @@ package Services;
 
 import Exceptions.UsernameOrPasswordDoesNotExistException;
 import Model.User;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.io.FileUtils;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
-import javax.jws.soap.SOAPBinding;
+import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class UserService {
 
-    private static List<User> users;
-    private static final Path USERS_PATH = FileSystemService.getPathToFile("config", "users.json");
+    private final static ArrayList<User> users = new ArrayList<>();
+    //private static final Path USERS_PATH = FileSystemService.getPathToFile("config", "users.json");
 
-    public static void loadUsersFromFile() throws IOException {
+    public static void loadUsersFromFile() throws IOException, ParseException {
 
-        if (!Files.exists(USERS_PATH)) {
-            FileUtils.copyURLToFile(UserService.class.getClassLoader().getResource("users.json"), USERS_PATH.toFile());
+        // JSON parser object to parse read file
+        JSONParser jsonParser = new JSONParser();
+
+        FileReader reader = new FileReader("../tinCAR/src/main/resources/users.json");
+        // Read JSON file
+        Object obj = jsonParser.parse(reader);
+
+        JSONArray userList = (JSONArray) obj;
+
+        for (Object value : userList) {
+            JSONObject o = (JSONObject) value;
+            User u = new User((String) o.get("username"), (String) o.get("password"), (String) o.get("role"));
+            users.add(u);
         }
-
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        users = objectMapper.readValue(USERS_PATH.toFile(), new TypeReference<List<User>>() {
-        });
     }
 
     public static void printUsers(){
