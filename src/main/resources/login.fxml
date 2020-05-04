@@ -3,25 +3,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<SplitPane dividerPositions="0.25" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-           minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="661.0"
-           xmlns="http://javafx.com/javafx/10.0.2-internal">
+<SplitPane dividerPositions="0.298" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="661.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
+        <AnchorPane cache="true" minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="200.0" style="-fx-background-image: url(&quot;logo.png&quot;);">
+            <Pane prefHeight="450.0" prefWidth="200.0" style="-fx-background-image: url(&quot;logo.png&quot;);" />
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="374.0">
+                <Label layoutX="130.0" layoutY="195.0" text="Username" />
+                <Label layoutX="130.0" layoutY="235.0" text="Password" />
+                <TextField fx:id="usernameField" layoutX="200.0" layoutY="190.0" promptText="username" />
+                <PasswordField fx:id="passwordField" layoutX="200.0" layoutY="230.0" promptText="password" />
+                <Button fx:id="LoginButton" layoutX="255.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="41.0" prefWidth="91.0" text="Login">
+                    <effect>
+                        <InnerShadow />
+                    </effect>
+                </Button>
+            <Text fx:id="loginMessage" fill="#ff0707" layoutX="205.0" layoutY="412.0" />
+        </AnchorPane>
     <effect>
-        <Blend/>
+        <Blend />
     </effect>
-    <AnchorPane cache="true" minHeight="0.0" minWidth="0.0" prefHeight="452.0" prefWidth="180.0"
-                style="-fx-background-image: url(&quot;logo.png&quot;);"/>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="374.0">
-        <Label layoutX="130.0" layoutY="195.0" text="Username"/>
-        <Label layoutX="130.0" layoutY="235.0" text="Password"/>
-        <TextField layoutX="200.0" layoutY="190.0" promptText="username"/>
-        <PasswordField layoutX="200.0" layoutY="230.0" promptText="password"/>
-        <Button layoutX="255.0" layoutY="270.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="91.0"
-                text="Login">
-            <effect>
-                <InnerShadow/>
-            </effect>
-        </Button>
-    </AnchorPane>
 </SplitPane>
