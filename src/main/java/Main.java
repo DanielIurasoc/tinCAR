@@ -21,8 +21,8 @@ public class Main extends Application {
         }catch(ParseException e){
             System.out.println("Parse Exception !");
         }
-        UserService.printUsers();
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+
+        Parent root = FXMLLoader.load(getClass().getResource("/login.fxml"));
         primaryStage.setTitle("tinCAR - The place to find your new car");
         primaryStage.setScene(new Scene(root, 800, 500));
         primaryStage.getIcons().add(new Image("icon.png"));
