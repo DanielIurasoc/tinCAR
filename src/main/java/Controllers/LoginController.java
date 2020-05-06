@@ -53,7 +53,7 @@ public class LoginController {
 
             //Pass the account
             MainPageController controller = loader.getController();
-            controller.setAccount(user);
+            controller.initMainPage(user);
 
             //Adding logo
             window.setTitle("tinCAR - The place to find your new car");
