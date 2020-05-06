@@ -1,15 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-      prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal">
-   <Label layoutX="199.0" layoutY="60.0" prefHeight="17.0" prefWidth="222.0" text="Main Page">
-      <font>
-         <Font name="Arial Black" size="24.0"/>
-      </font>
-   </Label>
-</Pane>
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainPageController">
+   <children>
+      <AnchorPane layoutX="217.0" layoutY="-2.0" prefHeight="800.0" prefWidth="981.0">
+         <children>
+            <Label layoutX="229.0" layoutY="250.0" prefHeight="50.0" prefWidth="162.0" text="Main Menu">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="800.0" prefWidth="200.0" styleClass="menu" stylesheets="@MainPageStyle.css" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="accountUsernameLabel" layoutX="37.0" layoutY="660.0" prefHeight="38.0" prefWidth="122.0" style="-fx-alignment: center;" text="Label" textFill="WHITE" underline="true" AnchorPane.bottomAnchor="101.60000000000002" AnchorPane.leftAnchor="37.0">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <AnchorPane prefHeight="100.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-4.0">
+               <children>
+                  <Label layoutX="5.0" layoutY="13.0" prefHeight="74.0" prefWidth="191.0" stylesheets="@MainPageStyle.css" text="tinCAR" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="13.0">
+                     <font>
+                        <Font size="41.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="CAR" size="40" />
+                     </graphic>
+                  </Label>
+               </children></AnchorPane>
+            <Button fx:id="mainPageButton" graphicTextGap="10.0" layoutY="128.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" styleClass="actualScreen" stylesheets="@MainPageStyle.css" text="Main Page" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="120.0">
+               <graphic>
+                  <FontAwesomeIconView glyphName="HOME" size="30" />
+               </graphic>
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="profileButton" graphicTextGap="10.0" layoutX="14.0" layoutY="198.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" styleClass="menuButton" stylesheets="@MainPageStyle.css" text="Profile" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="190.0">
+               <graphic>
+                  <FontAwesomeIconView glyphName="USER" size="30" />
+               </graphic>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="addButton" graphicTextGap="10.0" layoutY="300.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" styleClass="menuButton" stylesheets="@MainPageStyle.css" text="Add" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="260.0">
+               <graphic>
+                  <FontAwesomeIconView glyphName="PLUS" size="30" />
+               </graphic>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="logoutButton" graphicTextGap="10.0" layoutX="15.0" layoutY="692.0" mnemonicParsing="false" onAction="#handleLogoutButton" prefHeight="70.0" prefWidth="200.0" styleClass="menuButton" stylesheets="@MainPageStyle.css" text="Logout" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <Label text="&lt;-">
+                     <font>
+                        <Font name="Calibri" size="39.0" />
+                     </font>
+                  </Label>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

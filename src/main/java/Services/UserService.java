@@ -34,11 +34,11 @@ public class UserService {
         }
     }
 
-    public static String checkCredentials(String username, String password) throws UsernameOrPasswordDoesNotExistException {
+    public static User checkCredentials(String username, String password) throws UsernameOrPasswordDoesNotExistException {
         for (User user : users) {
             if (Objects.equals(username, user.getUsername()))
                 if (Objects.equals(password, user.getPassword()))
-                    return user.getRole();
+                    return user;
                 else throw new UsernameOrPasswordDoesNotExistException("Username or password invalid. Please try again !");
         }
         throw new UsernameOrPasswordDoesNotExistException("Username or password invalid. Please try again !");

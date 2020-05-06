@@ -1,6 +1,7 @@
 package Controllers;
 
 import Exceptions.UsernameOrPasswordDoesNotExistException;
+import Model.User;
 import Services.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,20 +34,26 @@ public class LoginController {
 
         try {
             // Check credentials and get the role of the account
-            String role = UserService.checkCredentials(usernameField.getText(), Base64.getEncoder().encodeToString((passwordField.getText()).getBytes()));
+            User user = UserService.checkCredentials(usernameField.getText(), Base64.getEncoder().encodeToString((passwordField.getText()).getBytes()));
 
             // Get the stage window where other scene is showed
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            Scene page = null;
+
+            FXMLLoader loader = new FXMLLoader();
 
             //Different page loaded depends on account role
-            if(role.equals("user")){
-                Parent MainPageParent = FXMLLoader.load(getClass().getResource("/MainPage.fxml"));
-                page = new Scene(MainPageParent, 800, 500);
-            } else if(role.equals("admin")){
-                Parent AdminPageParent = FXMLLoader.load(getClass().getResource("/AdminValidatePage.fxml"));
-                page = new Scene(AdminPageParent, 800, 500);
+            if(user.getRole().equals("user")){
+                loader.setLocation(getClass().getResource("/MainPage.fxml"));
+            } else if(user.getRole().equals("admin")){
+                loader.setLocation(getClass().getResource("/AdminValidatePage.fxml"));
             }
+
+            Parent pageParent = loader.load();
+            Scene page = new Scene(pageParent, 1200, 800);
+
+            //Pass the account
+            MainPageController controller = loader.getController();
+            controller.setAccount(user);
 
             //Adding logo
             window.setTitle("tinCAR - The place to find your new car");

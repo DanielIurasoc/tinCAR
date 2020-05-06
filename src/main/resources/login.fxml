@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<SplitPane dividerPositions="0.298" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="661.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
+<SplitPane dividerPositions="0.25" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
         <AnchorPane cache="true" minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="200.0" style="-fx-background-image: url(&quot;logo.png&quot;);">
             <Pane prefHeight="450.0" prefWidth="200.0" style="-fx-background-image: url(&quot;logo.png&quot;);" />
         </AnchorPane>

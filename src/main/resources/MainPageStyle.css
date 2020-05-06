@@ -1,0 +1,12 @@
+.menuButton{
+-fx-background-color: #057a49;
+}
+.menuButton:hover{
+-fx-background-color: #005934;
+}
+.actualScreen{
+-fx-background-color: #005934;
+}
+.menu{
+-fx-background-color: #2f423a;
+}
