@@ -4,9 +4,43 @@
 .menuButton:hover{
 -fx-background-color: #005934;
 }
-.actualScreen{
--fx-background-color: #005934;
-}
 .menu{
 -fx-background-color: #2f423a;
+}
+
+.viewDetailsButton{
+-fx-background-color: #03fc1c;
+-fx-font-weight: bold;
+-fx-font-size: 20px;
+-fx-font-family: "Arial";
+}
+.viewDetailsButton:hover{
+-fx-background-color: #00470e;
+-fx-font-weight: bold;
+-fx-font-size: 20px;
+-fx-font-family: "Arial";
+}
+.deleteButton{
+-fx-background-color: #fc0303;
+-fx-font-weight: bold;
+-fx-font-size: 20px;
+-fx-font-family: "Arial";
+}
+.deleteButton:hover{
+-fx-background-color: #6e0002;
+-fx-font-weight: bold;
+-fx-font-size: 20px;
+-fx-font-family: "Arial";
+}
+.priceLabel{
+-fx-font-weight: bold;
+-fx-text-alignment: center;
+-fx-font-size: 40px;
+-fx-font-family: "Arial";
+}
+.titleLabel{
+-fx-font-weight: bold;
+-fx-text-alignment: center;
+-fx-font-size: 40px;
+-fx-font-family: "Arial";
 }

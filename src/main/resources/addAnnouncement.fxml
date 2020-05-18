@@ -8,7 +8,7 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0"
             xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="Controllers.ValidatePageController">
+            fx:controller="Controllers.AddAnnouncementController">
    <AnchorPane prefHeight="815.0" prefWidth="200.0" styleClass="menu" stylesheets="@MainPageStyle.css"
                AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
       <Label fx:id="accountUsernameLabel" layoutX="37.0" layoutY="660.0" prefHeight="38.0" prefWidth="122.0"
@@ -40,6 +40,27 @@
             <Font size="18.0"/>
          </font>
       </Button>
+      <Button fx:id="profileButton" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleProfileButton"
+              prefHeight="70.0" prefWidth="200.0" styleClass="menuButton" stylesheets="@MainPageStyle.css"
+              text="Profile" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="230.0">
+         <font>
+            <Font size="18.0"/>
+         </font>
+         <graphic>
+            <FontAwesomeIconView glyphName="USER" size="30"/>
+         </graphic>
+      </Button>
+      <Button fx:id="addButton" graphicTextGap="10.0" layoutY="300.0" mnemonicParsing="false"
+              onAction="#handleAddButton" prefHeight="70.0" prefWidth="200.0" styleClass="menuButton"
+              stylesheets="@MainPageStyle.css" text="Add    " textFill="WHITE" AnchorPane.leftAnchor="0.0"
+              AnchorPane.topAnchor="300.0">
+         <font>
+            <Font size="18.0"/>
+         </font>
+         <graphic>
+            <FontAwesomeIconView glyphName="PLUS" size="30"/>
+         </graphic>
+      </Button>
       <Button fx:id="logoutButton" graphicTextGap="10.0" layoutX="15.0" layoutY="692.0" mnemonicParsing="false"
               onAction="#handleLogoutButton" prefHeight="70.0" prefWidth="200.0" styleClass="menuButton"
               stylesheets="@MainPageStyle.css" text="Logout" textFill="WHITE" AnchorPane.bottomAnchor="20.0"
@@ -48,17 +69,6 @@
             <Font size="18.0"/>
          </font>
       </Button>
-      <Button fx:id="ValidatePageButton" graphicTextGap="10.0" layoutX="6.0" layoutY="250.0" mnemonicParsing="false"
-              onAction="#handleValidatePageButton" prefHeight="70.0" prefWidth="200.0" styleClass="menuButton"
-              stylesheets="@MainPageStyle.css" text="Validate" textFill="WHITE" AnchorPane.leftAnchor="0.0"
-              AnchorPane.topAnchor="230.0">
-         <font>
-            <Font size="18.0"/>
-         </font>
-         <graphic>
-            <FontAwesomeIconView size="30"/>
-         </graphic>
-      </Button>
       <Label layoutX="35.0" layoutY="731.0" text="&lt;-">
          <font>
             <Font name="Calibri" size="39.0"/>
@@ -66,7 +76,7 @@
       </Label>
    </AnchorPane>
    <AnchorPane prefHeight="815.0" prefWidth="995.0" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="0.0">
-      <Label layoutX="175.0" layoutY="360.0" prefHeight="210.0" prefWidth="704.0" text="Validate Page">
+      <Label layoutX="175.0" layoutY="360.0" prefHeight="210.0" prefWidth="566.0" text="Add page">
          <font>
             <Font size="96.0"/>
          </font>

@@ -2,8 +2,10 @@ package Model;
 //"owner","status","title","description","Fuel type","Transmission",
 // "Kilometres","First Registration","picture","phone"
 public class Announcement {
+    private String id;
     private String owner;
     private String status;
+    private String price;
     private String title;
     private String description;
     private String fuel_type;
@@ -13,8 +15,10 @@ public class Announcement {
     private String picture;
     private String phone_number;
 
-    public Announcement(String owner, String status, String title, String description, String fuel_type,String transmission, String kilometres, String first_registration, String picture, String phone_number){
+    public Announcement(String id, String owner, String status, String price, String title, String description, String fuel_type,String transmission, String kilometres, String first_registration, String picture, String phone_number){
+        this.id = id;
         this.owner = owner;
+        this.price = price;
         this.status = status;
         this.title = title;
         this.description = description;
@@ -25,6 +29,10 @@ public class Announcement {
         this.picture = picture;
         this.phone_number = phone_number;
     }
+
+    public String getId() { return id; }
+
+    public String getPrice() { return price; }
 
     public String getOwner() { return owner; }
 
@@ -65,4 +73,8 @@ public class Announcement {
     public void setPhone_number(String phone_number) { this.phone_number = phone_number; }
 
     public void setOwner(String owner) { this.owner = owner; }
+
+    public void setPrice(String price) { this.price = price; }
+
+    public void setId(String id) { this.id = id; }
 }

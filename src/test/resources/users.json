@@ -1,0 +1,22 @@
+[
+    {
+        "username" : "id1",
+        "password" : "cGFzczE=",
+        "role" : "admin"
+    },
+    {
+        "username" : "id2",
+        "password" : "cGFzczI=",
+        "role" : "user"
+    },
+    {
+        "username" : "id3",
+        "password" : "cGFzczM=",
+        "role" : "user"
+    },
+    {
+        "username" : "id4",
+        "password" : "cGFzczQ=",
+        "role" : "user"
+    }
+]

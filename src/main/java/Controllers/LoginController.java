@@ -50,10 +50,16 @@ public class LoginController {
 
             Parent pageParent = loader.load();
             Scene page = new Scene(pageParent, 1200, 800);
+            page.getStylesheets().add("/MainPageStyle.css");
 
             //Pass the account
-            MainPageController controller = loader.getController();
-            controller.initMainPage(user);
+            if(user.getRole().equals("user")) {
+                MainPageController controller = loader.getController();
+                controller.initMainPage(user);
+            }else if(user.getRole().equals("admin")){
+                ValidatePageController controller = loader.getController();
+                controller.initValidatePage(user);
+            }
 
             //Adding logo
             window.setTitle("tinCAR - The place to find your new car");
