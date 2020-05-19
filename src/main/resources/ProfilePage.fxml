@@ -9,7 +9,7 @@
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0"
             xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="Controllers.ProfilePageController">
-   <AnchorPane prefHeight="815.0" prefWidth="200.0" styleClass="menu" stylesheets="@MainPageStyle.css"
+   <AnchorPane prefHeight="815.0" prefWidth="200.0" styleClass="menu" stylesheets="@pageStyle.css"
                AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
       <Label fx:id="accountUsernameLabel" layoutX="37.0" layoutY="660.0" prefHeight="38.0" prefWidth="122.0"
              style="-fx-alignment: center;" text="Label" textFill="WHITE" underline="true"
@@ -19,7 +19,7 @@
          </font>
       </Label>
       <AnchorPane prefHeight="100.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-4.0">
-         <Label layoutX="5.0" layoutY="13.0" prefHeight="74.0" prefWidth="191.0" stylesheets="@MainPageStyle.css"
+         <Label layoutX="5.0" layoutY="13.0" prefHeight="74.0" prefWidth="191.0" stylesheets="@pageStyle.css"
                 text="tinCAR" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="13.0">
             <font>
                <Font size="41.0"/>
@@ -31,7 +31,7 @@
       </AnchorPane>
       <Button fx:id="mainPageButton" graphicTextGap="10.0" layoutY="128.0" mnemonicParsing="false"
               onAction="#handleMainPageButton" prefHeight="70.0" prefWidth="200.0" styleClass="menuButton"
-              stylesheets="@MainPageStyle.css" text="Home" textFill="WHITE" AnchorPane.leftAnchor="0.0"
+              stylesheets="@pageStyle.css" text="Home" textFill="WHITE" AnchorPane.leftAnchor="0.0"
               AnchorPane.topAnchor="160.0">
          <graphic>
             <FontAwesomeIconView glyphName="HOME" size="30"/>
@@ -41,7 +41,7 @@
          </font>
       </Button>
       <Button fx:id="profileButton" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleProfileButton"
-              prefHeight="70.0" prefWidth="200.0" styleClass="menuButton" stylesheets="@MainPageStyle.css"
+              prefHeight="70.0" prefWidth="200.0" styleClass="menuButton" stylesheets="@pageStyle.css"
               text="Profile" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="230.0">
          <font>
             <Font size="18.0"/>
@@ -52,7 +52,7 @@
       </Button>
       <Button fx:id="addButton" graphicTextGap="10.0" layoutY="300.0" mnemonicParsing="false"
               onAction="#handleAddButton" prefHeight="70.0" prefWidth="200.0" styleClass="menuButton"
-              stylesheets="@MainPageStyle.css" text="Add    " textFill="WHITE" AnchorPane.leftAnchor="0.0"
+              stylesheets="@pageStyle.css" text="Add    " textFill="WHITE" AnchorPane.leftAnchor="0.0"
               AnchorPane.topAnchor="300.0">
          <font>
             <Font size="18.0"/>
@@ -63,7 +63,7 @@
       </Button>
       <Button fx:id="logoutButton" graphicTextGap="10.0" layoutX="15.0" layoutY="692.0" mnemonicParsing="false"
               onAction="#handleLogoutButton" prefHeight="70.0" prefWidth="200.0" styleClass="menuButton"
-              stylesheets="@MainPageStyle.css" text="Logout" textFill="WHITE" AnchorPane.bottomAnchor="20.0"
+              stylesheets="@pageStyle.css" text="Logout" textFill="WHITE" AnchorPane.bottomAnchor="20.0"
               AnchorPane.leftAnchor="0.0">
          <font>
             <Font size="18.0"/>

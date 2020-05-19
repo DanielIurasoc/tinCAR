@@ -69,72 +69,73 @@ public class MainPageController {
         VBox vbox = new VBox();
 
         for(Announcement announcement : announcements){
+            if(announcement.getStatus().equals("accepted")) {
+                // Announcement window
+                AnchorPane announcementPane = new AnchorPane();
+                announcementPane.setPrefHeight(200);
+                announcementPane.setPrefWidth(1000);
+                announcementPane.setStyle("-fx-background-color: #757575");
 
-            // Announcement window
-            AnchorPane announcementPane = new AnchorPane();
-            announcementPane.setPrefHeight(200);
-            announcementPane.setPrefWidth(1000);
-            announcementPane.setStyle("-fx-background-color: #757575");
+                // Picture
+                AnchorPane picture = new AnchorPane();
+                picture.setLayoutX(10);
+                picture.setLayoutY(10);
+                picture.setPrefWidth(250);
+                picture.setPrefHeight(180);
+                picture.setStyle("-fx-background-image: url(" + announcement.getPicture() + ")");
 
-            // Picture
-            AnchorPane picture = new AnchorPane();
-            picture.setLayoutX(10);
-            picture.setLayoutY(10);
-            picture.setPrefWidth(250);
-            picture.setPrefHeight(180);
-            picture.setStyle("-fx-background-image: url("+announcement.getPicture()+")");
+                // Title
+                Label title = new Label(announcement.getTitle());
+                title.setLayoutX(350);
+                title.setLayoutY(10);
+                title.setPrefHeight(60);
+                title.setPrefWidth(500);
+                title.setAlignment(Pos.CENTER);
+                title.getStyleClass().add("titleLabel");
 
-            // Title
-            Label title = new Label(announcement.getTitle());
-            title.setLayoutX(350);
-            title.setLayoutY(10);
-            title.setPrefHeight(60);
-            title.setPrefWidth(500);
-            title.setAlignment( Pos.CENTER );
-            title.getStyleClass().add("titleLabel");
+                // Price
+                Label price = new Label(announcement.getPrice());
+                price.setLayoutX(500);
+                price.setLayoutY(135);
+                price.setPrefHeight(50);
+                price.setPrefWidth(300);
+                price.setAlignment(Pos.CENTER);
+                price.getStyleClass().add("priceLabel");
 
-            // Price
-            Label price = new Label(announcement.getPrice());
-            price.setLayoutX(500);
-            price.setLayoutY(135);
-            price.setPrefHeight(50);
-            price.setPrefWidth(300);
-            price.setAlignment( Pos.CENTER );
-            price.getStyleClass().add("priceLabel");
+                // View Details Button
+                Button viewDetails = new Button("View Details");
+                viewDetails.setLayoutX(820);
+                viewDetails.setLayoutY(135);
+                viewDetails.setPrefHeight(50);
+                viewDetails.setPrefWidth(150);
+                viewDetails.getStyleClass().add("viewDetailsButton");
+                viewDetails.setOnAction(e -> {
+                    try {
+                        initDetailsPage(announcement, e);
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                });
 
-            // View Details Button
-            Button viewDetails = new Button("View Details");
-            viewDetails.setLayoutX(820);
-            viewDetails.setLayoutY(135);
-            viewDetails.setPrefHeight(50);
-            viewDetails.setPrefWidth(150);
-            viewDetails.getStyleClass().add("viewDetailsButton");
-            viewDetails.setOnAction(e -> {
-                try {
-                    initDetails(announcement, e);
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
+                // Add elements to announcement pane ( for both user and administrator )
+                announcementPane.getChildren().addAll(picture, title, price, viewDetails);
+
+                // Delete announcement Button created and added only if the account have administrator role
+                if (account.getRole().equals("admin")) {
+                    //Create button
+                    Button deteleAnnouncement = new Button("Delete");
+                    deteleAnnouncement.setLayoutX(820);
+                    deteleAnnouncement.setLayoutY(85);
+                    deteleAnnouncement.setPrefHeight(50);
+                    deteleAnnouncement.setPrefWidth(150);
+                    viewDetails.getStyleClass().add("deleteButton");
+                    //Add button to the announcement pane
+                    announcementPane.getChildren().add(deteleAnnouncement);
                 }
-            });
 
-            // Add elements to announcement pane ( for both user and administrator )
-            announcementPane.getChildren().addAll(picture, title, price, viewDetails);
-
-            // Delete announcement Button created and added only if the account have administrator role
-            if(account.getRole().equals("admin")){
-                //Create button
-                Button deteleAnnouncement = new Button("Delete");
-                deteleAnnouncement.setLayoutX(820);
-                deteleAnnouncement.setLayoutY(85);
-                deteleAnnouncement.setPrefHeight(50);
-                deteleAnnouncement.setPrefWidth(150);
-                viewDetails.getStyleClass().add("deleteButton");
-                //Add button to the announcement pane
-                announcementPane.getChildren().add(deteleAnnouncement);
+                //Add announcement pane to the VBox
+                vbox.getChildren().add(announcementPane);
             }
-
-            //Add announcement pane to the VBox
-            vbox.getChildren().add(announcementPane);
         }
         vbox.setSpacing(2);
         vbox.setStyle("-fx-background-color: #212121");
@@ -142,7 +143,7 @@ public class MainPageController {
         this.announcementsList.setContent(vbox);
     }
 
-    private void initDetails(Announcement announcement, ActionEvent actionEvent) throws IOException {
+    private void initDetailsPage(Announcement announcement, ActionEvent actionEvent) throws IOException {
         //Get window
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
@@ -157,6 +158,7 @@ public class MainPageController {
         window.getIcons().add(new Image("icon.png"));
 
         //Display window
+        window.close();
         window.setScene(page);
         window.show();
     }
@@ -197,6 +199,7 @@ public class MainPageController {
         window.getIcons().add(new Image("icon.png"));
 
         //Display window
+        window.close();
         window.setScene(page);
         window.show();
     }
@@ -216,6 +219,7 @@ public class MainPageController {
         window.getIcons().add(new Image("icon.png"));
 
         //Display window
+        window.close();
         window.setScene(page);
         window.show();
     }
@@ -235,6 +239,7 @@ public class MainPageController {
         window.getIcons().add(new Image("icon.png"));
 
         //Display window
+        window.close();
         window.setScene(page);
         window.show();
     }

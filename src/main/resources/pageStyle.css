@@ -44,3 +44,7 @@
 -fx-font-size: 40px;
 -fx-font-family: "Arial";
 }
+.detailsLabels{
+-fx-font-size: 26px;
+-fx-font-family: "Arial";
+}

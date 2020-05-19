@@ -43,7 +43,7 @@ public class ValidatePageController {
         loader.setLocation(getClass().getResource("/MainPage.fxml"));
         Parent profileParent = loader.load();
         Scene page = new Scene(profileParent, 1200, 800);
-        page.getStylesheets().add("/MainPageStyle.css");
+        page.getStylesheets().add("/pageStyle.css");
         MainPageController controller = loader.getController();
         controller.initMainPage(user);
 
@@ -52,6 +52,7 @@ public class ValidatePageController {
         window.getIcons().add(new Image("icon.png"));
 
         //Display window
+        window.close();
         window.setScene(page);
         window.show();
     }

@@ -50,7 +50,7 @@ public class LoginController {
 
             Parent pageParent = loader.load();
             Scene page = new Scene(pageParent, 1200, 800);
-            page.getStylesheets().add("/MainPageStyle.css");
+            page.getStylesheets().add("/pageStyle.css");
 
             //Pass the account
             if(user.getRole().equals("user")) {
