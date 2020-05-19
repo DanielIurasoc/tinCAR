@@ -11,8 +11,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -40,7 +43,7 @@ public class ViewDetailsController {
     @FXML
     public Button backButton;
     @FXML
-    public Label Description;
+    public ScrollPane Description;
 
     private User user;
 
@@ -50,7 +53,14 @@ public class ViewDetailsController {
         this.Picture.setStyle("-fx-background-image: url(" + announcement.getPicture() + ")");
         this.Owner.setText("Owner : " + announcement.getOwner());
         this.Phone.setText("Phone number :\n" + announcement.getPhone_number());
-        this.Description.setText(announcement.getDescription());
+        Text txt = new Text(announcement.getDescription());
+        txt.setWrappingWidth(900);
+        txt.getStyleClass().add("descriptionField");
+        StackPane sp = new StackPane();
+        sp.setStyle("-fx-background-color: #bac2bc");
+        sp.getChildren().add(txt);
+        this.Description.setContent(sp);
+        this.Description.setStyle("-fx-background: #bac2bc");
         this.Fuel.setText("Fuel : " + announcement.getFuel_type());
         this.Transmission.setText("Transmission : " + announcement.getTransmission());
         this.Kilometres.setText("Kilometres : " + announcement.getKilometres());

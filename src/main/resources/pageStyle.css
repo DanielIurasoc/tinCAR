@@ -14,37 +14,55 @@
 -fx-font-size: 20px;
 -fx-font-family: "Arial";
 }
+
 .viewDetailsButton:hover{
--fx-background-color: #00470e;
+-fx-background-color: #00e61f;
 -fx-font-weight: bold;
 -fx-font-size: 20px;
 -fx-font-family: "Arial";
 }
+
 .deleteButton{
--fx-background-color: #fc0303;
+-fx-background-color: #ff0000;
 -fx-font-weight: bold;
 -fx-font-size: 20px;
 -fx-font-family: "Arial";
 }
+
 .deleteButton:hover{
--fx-background-color: #6e0002;
+-fx-background-color: #de0000;
 -fx-font-weight: bold;
 -fx-font-size: 20px;
 -fx-font-family: "Arial";
 }
+
 .priceLabel{
 -fx-font-weight: bold;
 -fx-text-alignment: center;
 -fx-font-size: 40px;
 -fx-font-family: "Arial";
 }
+
 .titleLabel{
 -fx-font-weight: bold;
 -fx-text-alignment: center;
 -fx-font-size: 40px;
 -fx-font-family: "Arial";
 }
+
 .detailsLabels{
+-fx-font-size: 26px;
+-fx-font-family: "Arial";
+-fx-font-weight: bold;
+}
+
+.detailsTitle{
+-fx-font-size: 40px;
+-fx-font-family: "Arial";
+-fx-font-weight: bold;
+}
+
+.descriptionField{
 -fx-font-size: 26px;
 -fx-font-family: "Arial";
 }

@@ -74,7 +74,7 @@ public class MainPageController {
                 AnchorPane announcementPane = new AnchorPane();
                 announcementPane.setPrefHeight(200);
                 announcementPane.setPrefWidth(1000);
-                announcementPane.setStyle("-fx-background-color: #757575");
+                announcementPane.setStyle("-fx-background-color: #bac2bc");
 
                 // Picture
                 AnchorPane picture = new AnchorPane();
@@ -111,7 +111,7 @@ public class MainPageController {
                 viewDetails.getStyleClass().add("viewDetailsButton");
                 viewDetails.setOnAction(e -> {
                     try {
-                        initDetailsPage(announcement, e);
+                        handleDetailsButton(e, announcement);
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
                     }
@@ -123,14 +123,21 @@ public class MainPageController {
                 // Delete announcement Button created and added only if the account have administrator role
                 if (account.getRole().equals("admin")) {
                     //Create button
-                    Button deteleAnnouncement = new Button("Delete");
-                    deteleAnnouncement.setLayoutX(820);
-                    deteleAnnouncement.setLayoutY(85);
-                    deteleAnnouncement.setPrefHeight(50);
-                    deteleAnnouncement.setPrefWidth(150);
-                    viewDetails.getStyleClass().add("deleteButton");
+                    Button deleteAnnouncement = new Button("Delete");
+                    deleteAnnouncement.setLayoutX(820);
+                    deleteAnnouncement.setLayoutY(85);
+                    deleteAnnouncement.setPrefHeight(50);
+                    deleteAnnouncement.setPrefWidth(150);
+                    deleteAnnouncement.getStyleClass().add("deleteButton");
+                    deleteAnnouncement.setOnAction(e -> {
+                        try {
+                            handleDeleteButton(e, announcement);
+                        } catch (IOException ioException) {
+                            ioException.printStackTrace();
+                        }
+                    });
                     //Add button to the announcement pane
-                    announcementPane.getChildren().add(deteleAnnouncement);
+                    announcementPane.getChildren().add(deleteAnnouncement);
                 }
 
                 //Add announcement pane to the VBox
@@ -143,7 +150,11 @@ public class MainPageController {
         this.announcementsList.setContent(vbox);
     }
 
-    private void initDetailsPage(Announcement announcement, ActionEvent actionEvent) throws IOException {
+    private void handleDeleteButton(ActionEvent e, Announcement announcement) throws IOException {
+        throw new IOException();
+    }
+
+    private void handleDetailsButton(ActionEvent actionEvent, Announcement announcement) throws IOException {
         //Get window
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
@@ -152,6 +163,7 @@ public class MainPageController {
         Scene page = new Scene(detailsParent, 1200, 800);
         ViewDetailsController controller = loader.getController();
         controller.initDetailsPage(announcement, user);
+        page.getStylesheets().add("/pageStyle.css");
 
         //Adding logo
         window.setTitle("tinCAR - The place to find your new car");
@@ -175,7 +187,7 @@ public class MainPageController {
 
         for (Object value : announcementsList) {
             JSONObject o = (JSONObject) value;
-            Announcement announcement = new Announcement((String) o.get("id"),(String) o.get("owner"),(String) o.get("status"), (String) o.get("price"),(String) o.get("title"),(String) o.get("description"),(String) o.get("Fuel type"),(String) o.get("Transmission"),(String) o.get("Transmission"),(String) o.get("First Registration"),(String) o.get("picture"),(String) o.get("phone"));
+            Announcement announcement = new Announcement((String) o.get("id"), (String) o.get("owner"), (String) o.get("status"), (String) o.get("price"), (String) o.get("title"), (String) o.get("description"), (String) o.get("Fuel type"), (String) o.get("Transmission"), (String) o.get("Transmission"), (String) o.get("First Registration"), (String) o.get("picture"), (String) o.get("phone"));
             announcements.add(announcement);
         }
     }

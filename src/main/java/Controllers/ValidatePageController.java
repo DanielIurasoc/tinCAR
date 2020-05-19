@@ -18,10 +18,6 @@ public class ValidatePageController {
     @FXML
     public Button mainPageButton;
     @FXML
-    public Button profileButton;
-    @FXML
-    public Button addButton;
-    @FXML
     public Button logoutButton;
     @FXML
     public Button ValidatePageButton;
@@ -43,9 +39,9 @@ public class ValidatePageController {
         loader.setLocation(getClass().getResource("/MainPage.fxml"));
         Parent profileParent = loader.load();
         Scene page = new Scene(profileParent, 1200, 800);
-        page.getStylesheets().add("/pageStyle.css");
         MainPageController controller = loader.getController();
         controller.initMainPage(user);
+        page.getStylesheets().add("/pageStyle.css");
 
         //Adding logo
         window.setTitle("tinCAR - The place to find your new car");
