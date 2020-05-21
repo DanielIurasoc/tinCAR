@@ -2,6 +2,7 @@ package Controllers;
 
 import Model.Announcement;
 import Model.User;
+import Services.AnnouncementService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,12 +17,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -42,17 +39,16 @@ public class MainPageController {
     @FXML
     public ScrollPane announcementsList;
 
-    private final ArrayList<Announcement> announcements = new ArrayList<>();
+    private ArrayList<Announcement> announcements = new ArrayList<>();
     private User user;
 
     public void initMainPage(User account){
         this.accountUsernameLabel.setText(account.getUsername());
         this.user = account;
-        announcements.clear();
         mainPageButton.setStyle("-fx-background-color: #005934");
 
         try { // load announcements from file
-            loadAnnouncementsFromFile();
+            announcements = AnnouncementService.getAnnouncements();
         }catch(IOException e) {
             System.out.println("IO Exception !");
         }catch(ParseException e){
@@ -173,23 +169,6 @@ public class MainPageController {
         window.close();
         window.setScene(page);
         window.show();
-    }
-
-    private void loadAnnouncementsFromFile() throws IOException, ParseException {
-
-        // JSON parser object to parse read file
-        JSONParser jsonParser = new JSONParser();
-
-        FileReader reader = new FileReader("../tinCAR/src/main/resources/announcements.json");
-        // Read JSON file
-        Object obj = jsonParser.parse(reader);
-        JSONArray announcementsList = (JSONArray) obj;
-
-        for (Object value : announcementsList) {
-            JSONObject o = (JSONObject) value;
-            Announcement announcement = new Announcement((String) o.get("id"), (String) o.get("owner"), (String) o.get("status"), (String) o.get("price"), (String) o.get("title"), (String) o.get("description"), (String) o.get("Fuel type"), (String) o.get("Transmission"), (String) o.get("Transmission"), (String) o.get("First Registration"), (String) o.get("picture"), (String) o.get("phone"));
-            announcements.add(announcement);
-        }
     }
 
     public void handleMainPageButton() {

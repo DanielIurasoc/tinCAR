@@ -7,8 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -25,6 +24,23 @@ public class AddAnnouncementController {
     public Button logoutButton;
     @FXML
     public Label accountUsernameLabel;
+    public TextField title;
+    public TextArea description;
+    public TextField price;
+    public ChoiceBox<String> currencyChoice;
+    public RadioButton negotiable;
+    public RadioButton benzine;
+    public RadioButton electric;
+    public RadioButton hybrid;
+    public RadioButton diesel;
+    public RadioButton automatic;
+    public RadioButton manual;
+    public TextField kilometres;
+    public TextField firstRegistration;
+    public TextField picture;
+    public TextField phone;
+    public Label ErrorLabel;
+    public Button publishButton;
 
     private User user;
 
@@ -32,6 +48,39 @@ public class AddAnnouncementController {
         accountUsernameLabel.setText(account.getUsername());
         this.user = account;
         addButton.setStyle("-fx-background-color: #005934");
+
+        // Add options for currency
+        currencyChoice.getItems().clear();
+        currencyChoice.getItems().add("euro");
+        currencyChoice.getItems().add("ron");
+
+        // Make price field to accept only numbers
+        price.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                price.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+
+        // Make kilometres field to accept only numbers
+        kilometres.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                kilometres.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+
+        // Make first registration field to accept only numbers
+        firstRegistration.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                firstRegistration.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+
+        // Make phone number field to accept only numbers
+        phone.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                phone.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
     }
 
     public void handleMainPageButton(ActionEvent actionEvent) throws IOException {
