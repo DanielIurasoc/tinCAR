@@ -50,17 +50,17 @@ public class ViewDetailsController {
     public void initDetailsPage(Announcement announcement, User account) {
         this.Title.setText(announcement.getTitle());
         this.Title.setAlignment(Pos.CENTER);
-        this.Picture.setStyle("-fx-background-image: url(" + announcement.getPicture() + ")");
+        this.Picture.setStyle("-fx-background-image: url(" + "carPictures" + "/" + announcement.getPicture() + ")");
         this.Owner.setText("Owner : " + announcement.getOwner());
         this.Phone.setText("Phone number :\n" + announcement.getPhone_number());
         Text txt = new Text(announcement.getDescription());
         txt.setWrappingWidth(900);
         txt.getStyleClass().add("descriptionField");
         StackPane sp = new StackPane();
-        sp.setStyle("-fx-background-color: #bac2bc");
+        sp.setStyle("-fx-background-color: #ebeded");
         sp.getChildren().add(txt);
         this.Description.setContent(sp);
-        this.Description.setStyle("-fx-background: #bac2bc");
+        this.Description.setStyle("-fx-background: #ebeded");
         this.Fuel.setText("Fuel : " + announcement.getFuel_type());
         this.Transmission.setText("Transmission : " + announcement.getTransmission());
         this.Kilometres.setText("Kilometres : " + announcement.getKilometres());

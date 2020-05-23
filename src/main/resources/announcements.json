@@ -1,6 +1,5 @@
 [
   {
-    "id" : "1",
     "owner" : "id4",
     "status" : "accepted",
     "title" : "Audi A6 2014",
@@ -14,7 +13,6 @@
     "phone" : "0766 094 644"
   },
   {
-    "id" : "2",
     "owner" : "id2",
     "status" : "accepted",
     "title" : "Peugeot 308",
@@ -28,7 +26,6 @@
     "phone" : "0725 912 234"
   },
   {
-    "id" : "3",
     "owner" : "id4",
     "status" : "accepted",
     "title" : "Audi Q5 2016",
@@ -42,7 +39,6 @@
     "phone" : "0736 562 526"
   },
   {
-    "id" : "4",
     "owner" : "id2",
     "status" : "pending",
     "title" : "BMW SERIA 7 750d 2017",
@@ -56,7 +52,6 @@
     "phone" : "0734 159 950"
   },
   {
-    "id" : "5",
     "owner" : "id3",
     "status" : "accepted",
     "title" : "Skoda Octavia 2014",
@@ -70,7 +65,6 @@
     "phone" : "0766 094 644"
   },
   {
-    "id" : "6",
     "owner" : "id2",
     "status" : "accepted",
     "title": "BMW X5 M M50d",

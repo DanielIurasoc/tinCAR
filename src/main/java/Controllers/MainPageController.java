@@ -17,10 +17,11 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class MainPageController {
 
@@ -39,7 +40,8 @@ public class MainPageController {
     @FXML
     public ScrollPane announcementsList;
 
-    private ArrayList<Announcement> announcements = new ArrayList<>();
+    //private ArrayList<Announcement> announcements = new ArrayList<>();
+    private JSONArray announcements = new JSONArray();
     private User user;
 
     public void initMainPage(User account){
@@ -64,13 +66,15 @@ public class MainPageController {
 
         VBox vbox = new VBox();
 
-        for(Announcement announcement : announcements){
+        for(Object obj : announcements){
+            JSONObject o = (JSONObject) obj;
+            Announcement announcement = new Announcement((String) o.get("owner"), (String) o.get("status"), (String) o.get("price"), (String) o.get("title"), (String) o.get("description"), (String) o.get("Fuel type"), (String) o.get("Transmission"), (String) o.get("Transmission"), (String) o.get("First Registration"), (String) o.get("picture"), (String) o.get("phone"));
             if(announcement.getStatus().equals("accepted")) {
                 // Announcement window
                 AnchorPane announcementPane = new AnchorPane();
                 announcementPane.setPrefHeight(200);
                 announcementPane.setPrefWidth(1000);
-                announcementPane.setStyle("-fx-background-color: #bac2bc");
+                announcementPane.setStyle("-fx-background-color: #ebeded");
 
                 // Picture
                 AnchorPane picture = new AnchorPane();
@@ -78,7 +82,7 @@ public class MainPageController {
                 picture.setLayoutY(10);
                 picture.setPrefWidth(250);
                 picture.setPrefHeight(180);
-                picture.setStyle("-fx-background-image: url(" + announcement.getPicture() + ")");
+                picture.setStyle("-fx-background-image: url(" + "carPictures" + "/" + announcement.getPicture() + ")");/////////////////////
 
                 // Title
                 Label title = new Label(announcement.getTitle());
