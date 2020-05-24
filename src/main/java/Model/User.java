@@ -5,9 +5,9 @@ public class User {
     private final String username;
     private final String password;
     private final String role;
-    private final String phone;
-    private final String full_name;
-    private final String city;
+    private String phone;
+    private String full_name;
+    private String city;
 
     public User(String username, String password, String role, String phone1, String full_name1, String city1) {
         this.username = username;
@@ -33,5 +33,11 @@ public class User {
     public String getFull_name() { return full_name; }
 
     public String getCity() { return city; }
+
+    public void setPhone(String phone) { this.phone = phone; }
+
+    public void setFull_name(String name) { this.full_name = name; }
+
+    public void setCity(String city) { this.city = city; }
 }
 

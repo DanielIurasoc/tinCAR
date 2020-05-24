@@ -4,6 +4,16 @@
 .menuButton:hover{
 -fx-background-color: #005934;
 }
+.editButton{
+-fx-font-weight : bold;
+-fx-font-size: 26px;
+-fx-background-color: #057a49;
+}
+.editButton:hover{
+-fx-font-weight : bold;
+-fx-font-size: 26px;
+-fx-background-color: #005934;
+}
 .menu{
 -fx-background-color: #2f423a;
 }

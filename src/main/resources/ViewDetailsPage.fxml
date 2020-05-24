@@ -22,7 +22,7 @@
       </font>
    </Button>
    <AnchorPane fx:id="Picture" layoutX="16.0" layoutY="15.0" prefHeight="180.0" prefWidth="250.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="15.0" />
-   <Label fx:id="Price" layoutX="880.0" layoutY="719.0" prefHeight="55.0" prefWidth="235.0" styleClass="detailsLabels" stylesheets="@pageStyle.css" text="Price : " AnchorPane.bottomAnchor="22.0" AnchorPane.rightAnchor="25.0">
+   <Label fx:id="Price" layoutX="538.0" layoutY="724.0" prefHeight="55.0" prefWidth="367.0" styleClass="detailsLabels" stylesheets="@pageStyle.css" text="Price : " AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="295.0">
       <font>
          <Font size="26.0" />
       </font>

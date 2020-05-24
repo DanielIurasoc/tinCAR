@@ -9,10 +9,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+@SuppressWarnings("unchecked")
 
 public class ProfilePageController {
     @FXML
@@ -25,6 +28,14 @@ public class ProfilePageController {
     public Button logoutButton;
     @FXML
     public Label accountUsernameLabel;
+    @FXML
+    public TextField phoneLabel;
+    @FXML
+    public TextField nameLabel;
+    @FXML
+    public Button editButton;
+    @FXML
+    public TextField cityLabel;
 
     private User user;
 
@@ -32,6 +43,10 @@ public class ProfilePageController {
         accountUsernameLabel.setText(account.getUsername());
         profileButton.setStyle("-fx-background-color: #005934");
         this.user = account;
+        // Set information of the account
+        this.nameLabel.setText(user.getFull_name());
+        this.phoneLabel.setText(user.getPhone());
+        this.cityLabel.setText(user.getCity());
     }
 
     public void handleMainPageButton(ActionEvent actionEvent) throws IOException {

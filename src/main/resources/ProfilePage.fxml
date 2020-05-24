@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -60,18 +61,51 @@
          </font>
       </Label>
    </AnchorPane>
-   <AnchorPane prefHeight="300.0" prefWidth="995.0" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="0.0">
-      <children>
-         <Label layoutX="220.0" layoutY="156.0" prefHeight="46.0" prefWidth="602.0" text="Nume, oras, numar telefon linked to announcements added">
-            <font>
-               <Font size="22.0" />
-            </font>
-         </Label>
-      </children>
-   </AnchorPane>
-   <ScrollPane hbarPolicy="NEVER" layoutX="337.0" layoutY="421.0" prefHeight="515.0" prefWidth="995.0" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="300.0">
-      <content>
-         <VBox prefHeight="515.0" prefWidth="995.0" />
-      </content>
+   <ScrollPane hbarPolicy="NEVER" layoutX="337.0" layoutY="421.0" prefHeight="815.0" prefWidth="995.0" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="0.0">
+      <VBox prefHeight="815.0" prefWidth="1027.0">
+         <children>
+            <AnchorPane prefHeight="300.0" prefWidth="995.0">
+               <Label layoutX="125.0" layoutY="38.0" prefHeight="46.0" prefWidth="92.0" text="Name : " AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="40.0">
+                  <font>
+                     <Font size="26.0" />
+                  </font>
+               </Label>
+               <Label layoutX="126.0" layoutY="134.0" prefHeight="46.0" prefWidth="198.0" text="Phone number : " AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="130.0">
+                  <font>
+                     <Font size="26.0" />
+                  </font>
+               </Label>
+               <Label layoutX="129.0" layoutY="208.0" prefHeight="46.0" prefWidth="69.0" text="City : " AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="220.0">
+                  <font>
+                     <Font size="26.0" />
+                  </font>
+               </Label>
+               <Button fx:id="editButton" layoutX="747.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="112.0" prefWidth="173.0" styleClass="editButton" stylesheets="@pageStyle.css" text="Edit" wrapText="true">
+                  <font>
+                     <Font size="26.0" />
+                  </font>
+               </Button>
+               <TextField fx:id="nameLabel" layoutX="258.0" layoutY="41.0" prefHeight="44.0" prefWidth="388.0" AnchorPane.rightAnchor="350.0">
+                  <font>
+                     <Font size="20.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="phoneLabel" layoutX="354.0" layoutY="129.0" prefHeight="44.0" prefWidth="294.0" AnchorPane.rightAnchor="350.0">
+                  <font>
+                     <Font size="20.0" />
+                  </font>
+               </TextField>
+               <TextField fx:id="cityLabel" layoutX="227.0" layoutY="224.0" prefHeight="44.0" prefWidth="422.0" AnchorPane.rightAnchor="350.0">
+                  <font>
+                     <Font size="20.0" />
+                  </font>
+               </TextField>
+               <Label layoutX="127.0" layoutY="2.0" prefHeight="26.0" prefWidth="900.0" text="*To change your information modify the value of the fields and press Edit button" wrapText="true">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Label>
+            </AnchorPane>
+         </children></VBox>
    </ScrollPane>
 </AnchorPane>
