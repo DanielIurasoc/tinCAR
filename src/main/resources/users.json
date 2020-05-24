@@ -1,22 +1,31 @@
 [
   {
-    "username" : "id1",
+    "username" : "admin",
     "password" : "cGFzczE=",
     "role" : "admin"
   },
   {
-    "username" : "id2",
+    "username" : "jfabian",
     "password" : "cGFzczI=",
-    "role" : "user"
+    "role" : "user",
+    "phone" : "0727172522",
+    "city" : "Timisoara",
+    "full name" : "Jichi Fabian"
   },
   {
-    "username" : "id3",
+    "username" : "diurasoc",
     "password" : "cGFzczM=",
-    "role" : "user"
+    "role" : "user",
+    "phone" : "0726801322",
+    "city" : "Botosani",
+    "full name" : "Daniel Iurasoc"
   },
   {
-    "username" : "id4",
+    "username" : "alxionescu",
     "password" : "cGFzczQ=",
-    "role" : "user"
+    "role" : "user",
+    "phone" : "0756829152",
+    "city" : "Arad",
+    "full name" : "Alexandru Ionescu"
   }
 ]

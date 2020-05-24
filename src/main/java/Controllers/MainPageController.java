@@ -3,6 +3,7 @@ package Controllers;
 import Model.Announcement;
 import Model.User;
 import Services.AnnouncementService;
+import Services.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -68,7 +69,7 @@ public class MainPageController {
 
         for(Object obj : announcements){
             JSONObject o = (JSONObject) obj;
-            Announcement announcement = new Announcement((String) o.get("owner"), (String) o.get("status"), (String) o.get("price"), (String) o.get("title"), (String) o.get("description"), (String) o.get("Fuel type"), (String) o.get("Transmission"), (String) o.get("Transmission"), (String) o.get("First Registration"), (String) o.get("picture"), (String) o.get("phone"));
+            Announcement announcement = new Announcement((String) o.get("owner"), (String) o.get("status"), (String) o.get("price"), (String) o.get("title"), (String) o.get("description"), (String) o.get("Fuel type"), (String) o.get("Transmission"), (String) o.get("Kilometres"), (String) o.get("First Registration"), (String) o.get("picture"), (String) o.get("phone"));
             if(announcement.getStatus().equals("accepted")) {
                 // Announcement window
                 AnchorPane announcementPane = new AnchorPane();
@@ -162,7 +163,7 @@ public class MainPageController {
         Parent detailsParent = loader.load();
         Scene page = new Scene(detailsParent, 1200, 800);
         ViewDetailsController controller = loader.getController();
-        controller.initDetailsPage(announcement, user);
+        controller.initDetailsPage(announcement, user, UserService.searchUser(announcement.getOwner()));
         page.getStylesheets().add("/pageStyle.css");
 
         //Adding logo

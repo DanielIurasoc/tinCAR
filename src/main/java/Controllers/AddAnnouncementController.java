@@ -112,6 +112,9 @@ public class AddAnnouncementController {
             }
         });
 
+        // Initialize the phone field with phone number of the account, this field can be changed when add an announcement or on the profile page
+        phone.setText(account.getPhone());
+
         // Make phone number field to accept only numbers
         phone.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
@@ -122,8 +125,6 @@ public class AddAnnouncementController {
 
     public void handlePublishButton(){
         // After the announcement is published, an alert will be displayed and after press ok, it will redirect to profile page
-        //"owner","status","title","description","Fuel type","Transmission",
-        // "Kilometres","First Registration","picture","phone"
         JSONObject newAnnouncement = new JSONObject();
         try{
             newAnnouncement.put("owner", user.getUsername());

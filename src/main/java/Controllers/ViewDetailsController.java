@@ -37,6 +37,8 @@ public class ViewDetailsController {
     @FXML
     public Label Price;
     @FXML
+    public Label City;
+    @FXML
     public Label Transmission;
     @FXML
     public AnchorPane Picture;
@@ -45,14 +47,16 @@ public class ViewDetailsController {
     @FXML
     public ScrollPane Description;
 
+
     private User user;
 
-    public void initDetailsPage(Announcement announcement, User account) {
+    public void initDetailsPage(Announcement announcement, User account, User owner) {
         this.Title.setText(announcement.getTitle());
         this.Title.setAlignment(Pos.CENTER);
         this.Picture.setStyle("-fx-background-image: url(" + "carPictures" + "/" + announcement.getPicture() + ")");
-        this.Owner.setText("Owner : " + announcement.getOwner());
-        this.Phone.setText("Phone number :\n" + announcement.getPhone_number());
+        this.Owner.setText("Owner :\n" + owner.getFull_name());
+        this.Phone.setText("Phone number :\n" + owner.getPhone());
+        this.City.setText("City : " + owner.getCity());
         Text txt = new Text(announcement.getDescription());
         txt.setWrappingWidth(900);
         txt.getStyleClass().add("descriptionField");

@@ -29,9 +29,16 @@ public class UserService {
 
         for (Object value : userList) {
             JSONObject o = (JSONObject) value;
-            User u = new User((String) o.get("username"), (String) o.get("password"), (String) o.get("role"));
+            User u = new User((String) o.get("username"), (String) o.get("password"), (String) o.get("role"), (String) o.get("phone"), (String) o.get("full name"), (String) o.get("city"));
             users.add(u);
         }
+    }
+
+    public static User searchUser(String username){
+        for(User u : users)
+            if(u.getUsername().equals(username))
+                return u;
+        return new User("nan","nan","nan","nan","nan","nan");
     }
 
     public static User checkCredentials(String username, String password) throws UsernameOrPasswordDoesNotExistException {

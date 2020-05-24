@@ -27,12 +27,12 @@
          <Font size="26.0" />
       </font>
    </Label>
-   <Label fx:id="Phone" layoutX="108.0" layoutY="318.0" prefHeight="88.0" prefWidth="235.0" styleClass="detailsLabels" stylesheets="@pageStyle.css" text="Phone number :" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="310.0">
+   <Label fx:id="Phone" layoutX="108.0" layoutY="318.0" prefHeight="90.0" prefWidth="235.0" styleClass="detailsLabels" stylesheets="@pageStyle.css" text="Phone number :" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="335.0">
       <font>
          <Font size="26.0" />
       </font>
    </Label>
-   <Label fx:id="Owner" layoutX="22.0" layoutY="235.0" prefHeight="55.0" prefWidth="235.0" styleClass="detailsLabels" stylesheets="@pageStyle.css" text="Owner : " AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="235.0">
+   <Label fx:id="Owner" layoutX="22.0" layoutY="235.0" prefHeight="90.0" prefWidth="235.0" styleClass="detailsLabels" stylesheets="@pageStyle.css" text="Owner : " AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="235.0">
       <font>
          <Font size="26.0" />
       </font>
@@ -49,6 +49,11 @@
       </font>
    </Label>
    <Label fx:id="Registration" layoutX="688.0" layoutY="591.0" prefHeight="66.0" prefWidth="350.0" styleClass="detailsLabels" stylesheets="@pageStyle.css" text="First Registration : " AnchorPane.leftAnchor="700.0" AnchorPane.topAnchor="600.0">
+      <font>
+         <Font size="26.0" />
+      </font>
+   </Label>
+   <Label fx:id="City" layoutX="20.0" layoutY="440.0" prefHeight="90.0" prefWidth="235.0" styleClass="detailsLabels" stylesheets="@pageStyle.css" text="City : " AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="435.0">
       <font>
          <Font size="26.0" />
       </font>
