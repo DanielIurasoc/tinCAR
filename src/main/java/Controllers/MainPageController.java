@@ -88,7 +88,7 @@ public class MainPageController {
                 // Title
                 Label title = new Label(announcement.getTitle());
                 title.setLayoutX(350);
-                title.setLayoutY(10);
+                title.setLayoutY(20);
                 title.setPrefHeight(60);
                 title.setPrefWidth(500);
                 title.setAlignment(Pos.CENTER);
@@ -97,7 +97,7 @@ public class MainPageController {
                 // Price
                 Label price = new Label(announcement.getPrice());
                 price.setLayoutX(500);
-                price.setLayoutY(135);
+                price.setLayoutY(130);
                 price.setPrefHeight(50);
                 price.setPrefWidth(300);
                 price.setAlignment(Pos.CENTER);

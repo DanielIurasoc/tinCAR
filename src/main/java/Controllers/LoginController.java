@@ -24,11 +24,11 @@ public class LoginController {
 
     public Button LoginButton;
     @FXML
-    private Text loginMessage;
+    public Text loginMessage;
     @FXML
-    private PasswordField passwordField;
+    public PasswordField passwordField;
     @FXML
-    private TextField usernameField;
+    public TextField usernameField;
 
     public void handleLoginButton(ActionEvent actionEvent) throws IOException {
 

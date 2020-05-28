@@ -19,7 +19,7 @@
 }
 
 .viewDetailsButton{
--fx-background-color: #03fc1c;
+-fx-background-color: #11ba11; /*#03fc1c*/
 -fx-font-weight: bold;
 -fx-font-size: 20px;
 -fx-font-family: "Arial";
@@ -33,7 +33,7 @@
 }
 
 .deleteButton{
--fx-background-color: #ff0000;
+-fx-background-color: #e01929; /*#ff0000;*/
 -fx-font-weight: bold;
 -fx-font-size: 20px;
 -fx-font-family: "Arial";
@@ -75,4 +75,10 @@
 .descriptionField{
 -fx-font-size: 26px;
 -fx-font-family: "Arial";
+}
+
+.statusText{
+-fx-font-size: 20px;
+-fx-font-family: Arial;
+-fx-font-weight: bold;
 }
