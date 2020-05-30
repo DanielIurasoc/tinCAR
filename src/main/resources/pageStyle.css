@@ -82,3 +82,12 @@
 -fx-font-family: Arial;
 -fx-font-weight: bold;
 }
+
+.denialReasonNewSceneLabel{
+-fx-font-size: 20px;
+-fx-font-family: Arial;
+-fx-font-weight: bold;
+-fx-padding: 10px;
+-fx-text-fill: white;
+-fx-background-color: #1c3838;
+}

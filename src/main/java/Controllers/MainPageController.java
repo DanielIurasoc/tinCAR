@@ -87,7 +87,7 @@ public class MainPageController {
 
                 // Title
                 Label title = new Label(announcement.getTitle());
-                title.setLayoutX(350);
+                title.setLayoutX(300);
                 title.setLayoutY(20);
                 title.setPrefHeight(60);
                 title.setPrefWidth(500);
@@ -96,7 +96,7 @@ public class MainPageController {
 
                 // Price
                 Label price = new Label(announcement.getPrice());
-                price.setLayoutX(500);
+                price.setLayoutX(400);
                 price.setLayoutY(130);
                 price.setPrefHeight(50);
                 price.setPrefWidth(300);
@@ -146,7 +146,7 @@ public class MainPageController {
             }
         }
         vbox.setSpacing(2);
-        vbox.setStyle("-fx-background-color: #212121");
+        vbox.setStyle("-fx-background-color: #d4d9d9");
         //Set announcementsList ( scrollPane ) content to be the VBox with all announcements
         this.announcementsList.setContent(vbox);
     }

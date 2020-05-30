@@ -165,13 +165,21 @@ public class ProfilePageController {
                     default:
                         statusText.setText("Denied");
                         statusText.setFill(Color.rgb(240, 23, 12));
+                        Button seeReasonButton = new Button("Reason");
+                        seeReasonButton.setLayoutX(820);
+                        seeReasonButton.setLayoutY(83);
+                        seeReasonButton.setPrefHeight(50);
+                        seeReasonButton.setPrefWidth(150);
+                        seeReasonButton.getStyleClass().add("deleteButton");
+                        seeReasonButton.setOnAction(e -> handleDenialReasonButton(announcement.getStatus()));
+                        announcementPane.getChildren().add(seeReasonButton);
                         break;
                 }
 
                 // Add the two elements to the stack pane witch will be added in the announcement pane
                 status.getChildren().addAll(statusShape, statusText);
                 status.setLayoutX(820);
-
+                
                 // Add elements to announcement pane ( for both user and administrator )
                 announcementPane.getChildren().addAll(picture, title, price, deleteButton, status);
 
@@ -179,8 +187,27 @@ public class ProfilePageController {
                 listOfItems.getChildren().add(announcementPane);
             }
         }
-        listOfItems.setSpacing(1);
+        listOfItems.setSpacing(2);
         listOfItems.setStyle("-fx-background-color: #d4d9d9");
+    }
+
+    private void handleDenialReasonButton(String status) {
+        Stage secondStage = new Stage();
+
+        Label root = new Label();
+        root.setPrefHeight(500);
+        root.setPrefWidth(300);
+        root.setText(status);
+        root.setWrapText(true);
+        root.getStyleClass().add("denialReasonNewSceneLabel");
+        Scene scene = new Scene(root, 500, 300);
+        scene.getStylesheets().add("pageStyle.css");
+        secondStage.setScene(scene);
+
+        secondStage.setTitle("tinCAR - The place to find your new car");
+        secondStage.getIcons().add(new Image("icon.png"));
+
+        secondStage.show();
     }
 
     private void handleDeleteButton(Announcement announcement) throws IOException {
@@ -243,6 +270,7 @@ public class ProfilePageController {
             }
         }
 
+        // Write data
         FileWriter file = new FileWriter("../tinCAR/src/main/resources/users.json");
         file.write(userList.toJSONString());
         file.flush();
@@ -250,14 +278,6 @@ public class ProfilePageController {
 
         // actualize data with all users in case we switch account
         UserService.loadUsersFromFile();
-
-        /*Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Edit profile");
-        alert.setHeaderText("Profile information edited successfully !");
-        alert.setContentText("Press ok to continue.");
-        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image("icon.png"));
-        alert.show();*/
         successLabel.setText("Profile edited successfully !");
     }
 
