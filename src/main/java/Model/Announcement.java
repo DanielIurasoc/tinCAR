@@ -61,8 +61,6 @@ public class Announcement {
                 return false;
             if(!add.getTitle().equals(this.getTitle()))
                 return false;
-            if(!add.getDescription().equals(this.getDescription()))
-                return false;
             if(!add.getFuel_type().equals(this.getFuel_type()))
                 return false;
             if(!add.getTransmission().equals(this.getTransmission()))

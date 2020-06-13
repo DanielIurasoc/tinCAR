@@ -21,7 +21,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import javax.swing.*;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -33,17 +32,12 @@ public class ValidatePageController {
     @FXML
     public Button logoutButton;
     @FXML
-    public Button profileButton;
-    @FXML
-    public Button addButton;
-    @FXML
     public Button ValidatePageButton;
     @FXML
     public Label accountUsernameLabel;
     @FXML
     public ScrollPane announcementsList;
 
-    //private ArrayList<Announcement> announcements = new ArrayList<>();
     private JSONArray announcements = new JSONArray();
     private User user;
 
@@ -51,6 +45,7 @@ public class ValidatePageController {
         this.accountUsernameLabel.setText(account.getUsername());
         this.user = account;
         ValidatePageButton.setStyle("-fx-background-color: #005934");
+        announcementsList.getStylesheets().add("/pageStyle.css");
 
         // load announcements from file
         try {
@@ -172,7 +167,7 @@ public class ValidatePageController {
     }
 
     private void handleAcceptButton(ActionEvent e, Announcement announcement) throws IOException, ParseException {
-        /* JSON parser object to parse read file
+        // JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
 
         FileReader reader = new FileReader("../tinCAR/src/main/resources/announcements.json");
@@ -183,8 +178,9 @@ public class ValidatePageController {
 
         for (Object value : announceList) {
             JSONObject o = (JSONObject) value;
-            //Announcement add = (Announcement)o;
-            if(o.equals(announcement)){
+
+            //search for the right announcement by title, price and owner combination
+            if(o.get("title").equals(announcement.getTitle()) && o.get("owner").equals(announcement.getOwner()) && o.get("price").equals(announcement.getPrice())){
                 // change the value in json document
                 o.put("status", "accepted");
                 //break;
@@ -205,7 +201,7 @@ public class ValidatePageController {
         }catch(ParseException ex){
             System.out.println("Parse Exception !");
         }
-*/
+
         //show success message
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "Announcement accepted", ButtonType.OK);
         alert.setTitle("Announcement accepted1");
@@ -220,71 +216,69 @@ public class ValidatePageController {
         // If OK button is pressed reload page
         if (result.isPresent() && result.get() == ButtonType.OK) {
             //reload Validate Page with updated announcements
-            //initValidatePage(user);
+            initValidatePage(user);
         }
     }
 
     private void handleDenyButton(ActionEvent e, Announcement announcement) throws IOException, ParseException {
-        //show reason of denial input dialog
         String reasonOfDenial;
 
         // create a text input dialog
         TextInputDialog td = new TextInputDialog("write here");
 
-        td.setHeight(200);
-        td.setWidth(200);
+        td.setWidth(350);
         td.setTitle("Deny announcement");
         td.setHeaderText("Enter reason of denial");
         td.setResizable(false);
         Stage stage = (Stage) td.getDialogPane().getScene().getWindow();
         stage.getIcons().add(new Image("icon.png"));
+        //stage.setHeight(200);
+        //stage.setWidth(400);
 
-        td.showAndWait();
+        Optional<String> result = td.showAndWait();
 
-        //get the String user entered in the TextInputDialog
-        reasonOfDenial = (String) td.getEditor().getText();
+        // If OK button is pressed update JSON and reload page
+        if (result.isPresent()) {
+            //get the String user entered in the TextInputDialog
+            reasonOfDenial = td.getEditor().getText();
 
-        //test
-        JOptionPane.showMessageDialog( null, reasonOfDenial );
+            // JSON parser object to parse read file
+            JSONParser jsonParser = new JSONParser();
 
-/*
-        // JSON parser object to parse read file
-        JSONParser jsonParser = new JSONParser();
+            FileReader reader = new FileReader("../tinCAR/src/main/resources/announcements.json");
+            // Read JSON file
+            Object obj = jsonParser.parse(reader);
 
-        FileReader reader = new FileReader("../tinCAR/src/main/resources/announcements.json");
-        // Read JSON file
-        Object obj = jsonParser.parse(reader);
+            JSONArray announceList = (JSONArray) obj;
 
-        JSONArray announceList = (JSONArray) obj;
+            for (Object value : announceList) {
+                JSONObject o = (JSONObject) value;
 
-        for (Object value : announceList) {
-            JSONObject o = (JSONObject) value;
-            if(o.equals(announcement)){
-                // change the value in json document
-                o.put("status", reasonOfDenial);
-                //break;
+                //search for the right announcement by title, price and owner combination
+                if(o.get("title").equals(announcement.getTitle()) && o.get("owner").equals(announcement.getOwner()) && o.get("price").equals(announcement.getPrice())){
+                    // change the value in json document
+                    o.put("status", reasonOfDenial);
+                }
             }
+
+            // Write data
+            FileWriter file = new FileWriter("../tinCAR/src/main/resources/announcements.json");
+            file.write(announceList.toJSONString());
+            file.flush();
+            file.close();
+
+            //reload announcements with updated changes
+            try {
+                announcements = AnnouncementService.getAnnouncements();
+            }catch(IOException ex) {
+                System.out.println("IO Exception !");
+            }catch(ParseException ex){
+                System.out.println("Parse Exception !");
+            }
+
+            //reload Validate Page with updated announcements
+            initValidatePage(user);
         }
-
-        // Write data
-        FileWriter file = new FileWriter("../tinCAR/src/main/resources/announcements.json");
-        file.write(announceList.toJSONString());
-        file.flush();
-        file.close();
-
-        //reload announcements with updated changes
-        try {
-            announcements = AnnouncementService.getAnnouncements();
-        }catch(IOException ex) {
-            System.out.println("IO Exception !");
-        }catch(ParseException ex){
-            System.out.println("Parse Exception !");
-        }
-*/
-        //show success message
-
-        //reload Validate Page with updated announcements
-        //initValidatePage(user);
     }
 
     private void handleDetailsButton(ActionEvent actionEvent, Announcement announcement) throws IOException {
