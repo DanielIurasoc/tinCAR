@@ -11,9 +11,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -22,7 +20,9 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Optional;
 
 public class MainPageController {
 
@@ -152,7 +152,37 @@ public class MainPageController {
     }
 
     private void handleDeleteButton(ActionEvent e, Announcement announcement) throws IOException {
-        throw new IOException();
+        JSONArray newListOfAnnouncements = new JSONArray();
+
+        // Add to the new list all elements except the one with same title, owner and price(the one we want to delete)
+        for(Object o : announcements){
+            JSONObject jo = (JSONObject) o;
+            if(!jo.get("title").equals(announcement.getTitle())){
+                newListOfAnnouncements.add(jo);
+            }
+        }
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
+        alert.setTitle("Delete announcement");
+        alert.setHeaderText("Are you sure?");
+        alert.setContentText("Do you really want to delete this record? This process cannot be undone.");
+        alert.setResizable(false);
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("icon.png"));
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        // If yes button is pressed then the announcement is gone
+        if (result.isPresent() && result.get() == ButtonType.YES) {
+            // Write to the file the new announcements list
+            FileWriter file = new FileWriter("../tinCAR/src/main/resources/announcements.json");
+            file.write(newListOfAnnouncements.toJSONString());
+            file.flush();
+            file.close();
+
+            // Reinitialize the Main page
+            initMainPage(user);
+        }
     }
 
     private void handleDetailsButton(ActionEvent actionEvent, Announcement announcement) throws IOException {

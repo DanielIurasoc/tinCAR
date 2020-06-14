@@ -46,6 +46,34 @@
 -fx-font-family: "Arial";
 }
 
+.acceptButton{
+-fx-background-color: #11ba11; /*#03fc1c*/
+-fx-font-weight: bold;
+-fx-font-size: 20px;
+-fx-font-family: "Arial";
+}
+
+.acceptButton:hover{
+-fx-background-color: #00e61f;
+-fx-font-weight: bold;
+-fx-font-size: 20px;
+-fx-font-family: "Arial";
+}
+
+.denyButton{
+-fx-background-color: #e01929; /*#ff0000;*/
+-fx-font-weight: bold;
+-fx-font-size: 20px;
+-fx-font-family: "Arial";
+}
+
+.denyButton:hover{
+-fx-background-color: #de0000;
+-fx-font-weight: bold;
+-fx-font-size: 20px;
+-fx-font-family: "Arial";
+}
+
 .priceLabel{
 -fx-font-weight: bold;
 -fx-text-alignment: center;

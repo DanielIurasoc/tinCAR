@@ -216,7 +216,7 @@ public class ProfilePageController {
         // Add to the new list all elements except the one with same title, owner and price(the one we want to delete)
         for(Object o : announcements){
             JSONObject jo = (JSONObject) o;
-            if(!jo.get("title").equals(announcement.getTitle())){
+            if(!jo.get("title").equals(announcement.getTitle()) && !jo.get("owner").equals(announcement.getOwner()) && !jo.get("price").equals(announcement.getPrice())){
                 newListOfAnnouncements.add(jo);
             }
         }
