@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ProfilePageController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ProfilePageController">
    <AnchorPane prefHeight="815.0" prefWidth="200.0" styleClass="menu" stylesheets="@pageStyle.css" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
       <Label fx:id="accountUsernameLabel" layoutX="37.0" layoutY="660.0" prefHeight="38.0" prefWidth="122.0" style="-fx-alignment: center;" text="Label" textFill="WHITE" underline="true" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="100.0">
          <font>

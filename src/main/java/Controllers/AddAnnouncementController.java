@@ -160,7 +160,7 @@ public class AddAnnouncementController {
             // Get fuel type, make verifications, throw exception if needed or set field if everything is in order
             String fuelTypeField = this.fuelType.getValue();
             if(fuelTypeField == null || fuelTypeField.isEmpty()){
-                throw new fuelTypeFieldMandatoryException(" is mandatory !");
+                throw new fuelTypeFieldMandatoryException("Fuel type is mandatory !");
             } else {
                 newAnnouncement.put("Fuel type", fuelTypeField);
             }
@@ -202,7 +202,7 @@ public class AddAnnouncementController {
 
             //Get older announcements and add new announcement to the array
             JSONArray array;
-            array = AnnouncementService.getAnnouncements();
+            array = AnnouncementService.getAnnouncements("../tinCAR/src/main/resources/announcements.json");
             array.add(newAnnouncement);
 
             // Write to file the announcements updated

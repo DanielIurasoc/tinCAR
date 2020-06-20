@@ -80,6 +80,7 @@ public class ViewDetailsController {
         loader.setLocation(getClass().getResource("/MainPage.fxml"));
         Parent profileParent = loader.load();
         Scene page = new Scene(profileParent, 1200, 800);
+
         //Get controller
         MainPageController controller = loader.getController();
         controller.initMainPage(user);

@@ -15,7 +15,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         try {
-            UserService.loadUsersFromFile();
+            UserService.loadUsersFromFile("../tinCAR/src/main/resources/users.json");
         }catch(IOException e) {
             System.out.println("IO Exception !");
         }catch(ParseException e){

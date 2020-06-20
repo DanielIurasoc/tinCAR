@@ -79,7 +79,7 @@ public class ProfilePageController {
         this.cityLabel.setText(user.getCity());
 
         try { // load announcements from file
-            announcements = AnnouncementService.getAnnouncements();
+            announcements = AnnouncementService.getAnnouncements("../tinCAR/src/main/resources/announcements.json");
         }catch(IOException e) {
             System.out.println("IO Exception !");
         }catch(ParseException e){
@@ -277,7 +277,7 @@ public class ProfilePageController {
         file.close();
 
         // actualize data with all users in case we switch account
-        UserService.loadUsersFromFile();
+        UserService.loadUsersFromFile("../tinCAR/src/main/resources/users.json");
         successLabel.setText("Profile edited successfully !");
     }
 

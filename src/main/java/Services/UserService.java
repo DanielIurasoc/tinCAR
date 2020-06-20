@@ -16,12 +16,12 @@ public class UserService {
 
     private final static ArrayList<User> users = new ArrayList<>();
 
-    public static void loadUsersFromFile() throws IOException, ParseException {
+    public static void loadUsersFromFile(String path) throws IOException, ParseException {
 
         // JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
 
-        FileReader reader = new FileReader("../tinCAR/src/main/resources/users.json");
+        FileReader reader = new FileReader(path);
         // Read JSON file
         Object obj = jsonParser.parse(reader);
 
