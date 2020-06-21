@@ -302,7 +302,7 @@ public class ValidatePageController {
         window.show();
     }
 
-    public void handleMainPageButton(String path) throws IOException {
+    public void handleMainPageButton() throws IOException {
         //Get window
         Stage window = (Stage)mainPageButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
@@ -310,7 +310,7 @@ public class ValidatePageController {
         Parent profileParent = loader.load();
         Scene page = new Scene(profileParent, 1200, 800);
         MainPageController controller = loader.getController();
-        controller.initMainPage(user, path);
+        controller.initMainPage(user, "../tinCAR/src/main/resources/announcements.json");
         page.getStylesheets().add("/pageStyle.css");
 
         //Adding logo

@@ -34,8 +34,6 @@ public class LoginController {
             // Check credentials and get the role of the account
             User user = UserService.checkCredentials(usernameField.getText(), Base64.getEncoder().encodeToString((passwordField.getText()).getBytes()));
 
-            loginMessage.setText("Login successfully");
-
             // Get the stage window where other scene is showed
             Stage window = (Stage)LoginButton.getScene().getWindow();
 
