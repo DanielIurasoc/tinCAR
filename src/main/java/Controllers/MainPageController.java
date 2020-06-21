@@ -41,17 +41,16 @@ public class MainPageController {
     @FXML
     public ScrollPane announcementsList;
 
-    //private ArrayList<Announcement> announcements = new ArrayList<>();
     private JSONArray announcements = new JSONArray();
     private User user;
 
-    public void initMainPage(User account){
+    public void initMainPage(User account, String path){
         this.accountUsernameLabel.setText(account.getUsername());
         this.user = account;
         mainPageButton.setStyle("-fx-background-color: #005934");
 
         try { // load announcements from file
-            announcements = AnnouncementService.getAnnouncements("../tinCAR/src/main/resources/announcements.json");
+            announcements = AnnouncementService.getAnnouncements(path);
         }catch(IOException e) {
             System.out.println("IO Exception !");
         }catch(ParseException e){
@@ -132,7 +131,7 @@ public class MainPageController {
                     deleteAnnouncement.getStyleClass().add("deleteButton");
                     deleteAnnouncement.setOnAction(e -> {
                         try {
-                            handleDeleteButton(announcement);
+                            handleDeleteButton(announcement, path);
                         } catch (IOException ioException) {
                             ioException.printStackTrace();
                         }
@@ -151,7 +150,7 @@ public class MainPageController {
         this.announcementsList.setContent(vbox);
     }
 
-    private void handleDeleteButton(Announcement announcement) throws IOException {
+    public void handleDeleteButton(Announcement announcement, String path) throws IOException {
         JSONArray newListOfAnnouncements = new JSONArray();
 
         // Add to the new list all elements except the one with same title, owner and price(the one we want to delete)
@@ -175,17 +174,17 @@ public class MainPageController {
         // If yes button is pressed then the announcement is gone
         if (result.isPresent() && result.get() == ButtonType.YES) {
             // Write to the file the new announcements list
-            FileWriter file = new FileWriter("../tinCAR/src/main/resources/announcements.json");
+            FileWriter file = new FileWriter(path);
             file.write(newListOfAnnouncements.toJSONString());
             file.flush();
             file.close();
 
             // Reinitialize the Main page
-            initMainPage(user);
+            initMainPage(user, path);
         }
     }
 
-    private void handleDetailsButton(Announcement announcement) throws IOException {
+    public void handleDetailsButton(Announcement announcement) throws IOException {
         //Get window
         Stage window = (Stage)mainPageButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
@@ -207,7 +206,7 @@ public class MainPageController {
     }
 
     public void handleMainPageButton() {
-        initMainPage(user);
+        initMainPage(user, "../tinCAR/src/main/resources/announcements.json");
     }
 
     public void handleProfileButton() throws IOException {
@@ -218,7 +217,7 @@ public class MainPageController {
         Parent profileParent = loader.load();
         Scene page = new Scene(profileParent, 1200, 800);
         ProfilePageController controller = loader.getController();
-        controller.initProfilePage(user);
+        controller.initProfilePage(user, "../tinCAR/src/main/resources/announcements.json");
 
         //Adding logo
         window.setTitle("tinCAR - The place to find your new car");
@@ -258,7 +257,7 @@ public class MainPageController {
         Parent profileParent = loader.load();
         Scene page = new Scene(profileParent, 1200, 800);
         ValidatePageController controller = loader.getController();
-        controller.initValidatePage(user);
+        controller.initValidatePage(user, "../tinCAR/src/main/resources/announcements.json");
 
         //Adding logo
         window.setTitle("tinCAR - The place to find your new car");
@@ -285,5 +284,13 @@ public class MainPageController {
         window.close();
         window.setScene(page);
         window.show();
+    }
+
+    public JSONArray getAnnouncements(){
+        return this.announcements;
+    }
+
+    public User getUser(){
+        return this.user;
     }
 }

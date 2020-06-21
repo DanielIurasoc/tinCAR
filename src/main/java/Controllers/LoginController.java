@@ -37,7 +37,7 @@ public class LoginController {
             loginMessage.setText("Login successfully");
 
             // Get the stage window where other scene is showed
-            Stage window = (Stage)usernameField.getScene().getWindow();
+            Stage window = (Stage)LoginButton.getScene().getWindow();
 
             FXMLLoader loader = new FXMLLoader();
 
@@ -55,10 +55,10 @@ public class LoginController {
             //Pass the account
             if(user.getRole().equals("user")) {
                 MainPageController controller = loader.getController();
-                controller.initMainPage(user);
+                controller.initMainPage(user, "../tinCAR/src/main/resources/announcements.json");
             }else if(user.getRole().equals("admin")){
                 ValidatePageController controller = loader.getController();
-                controller.initValidatePage(user);
+                controller.initValidatePage(user, "../tinCAR/src/main/resources/announcements.json");
             }
 
             //Adding logo

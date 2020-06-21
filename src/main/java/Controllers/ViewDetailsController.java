@@ -2,11 +2,9 @@ package Controllers;
 
 import Model.Announcement;
 import Model.User;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -73,9 +71,9 @@ public class ViewDetailsController {
         this.user = account;
     }
 
-    public void handleBackButton(ActionEvent actionEvent) throws IOException {
+    public void handleBackButton() throws IOException {
         //Get window
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage window = (Stage) Title.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/MainPage.fxml"));
         Parent profileParent = loader.load();
@@ -83,7 +81,7 @@ public class ViewDetailsController {
 
         //Get controller
         MainPageController controller = loader.getController();
-        controller.initMainPage(user);
+        controller.initMainPage(user, "../tinCAR/src/main/resources/announcements.json");
         page.getStylesheets().add("/pageStyle.css");
 
         //Adding logo
@@ -94,5 +92,9 @@ public class ViewDetailsController {
         window.close();
         window.setScene(page);
         window.show();
+    }
+
+    public User getUser(){
+        return this.user;
     }
 }

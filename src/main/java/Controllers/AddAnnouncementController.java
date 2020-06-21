@@ -234,7 +234,7 @@ public class AddAnnouncementController {
                 Parent profileParent = loader.load();
                 Scene page = new Scene(profileParent, 1200, 800);
                 ProfilePageController controller = loader.getController();
-                controller.initProfilePage(user);
+                controller.initProfilePage(user, "../tinCAR/src/main/resources/announcements.json");
 
                 //Adding logo
                 window.setTitle("tinCAR - The place to find your new car");
@@ -275,7 +275,7 @@ public class AddAnnouncementController {
         Scene page = new Scene(profileParent, 1200, 800);
         page.getStylesheets().add("/pageStyle.css");
         MainPageController controller = loader.getController();
-        controller.initMainPage(user);
+        controller.initMainPage(user, "../tinCAR/src/main/resources/announcements.json");
 
         //Adding logo
         window.setTitle("tinCAR - The place to find your new car");
@@ -295,7 +295,7 @@ public class AddAnnouncementController {
         Parent profileParent = loader.load();
         Scene page = new Scene(profileParent, 1200, 800);
         ProfilePageController controller = loader.getController();
-        controller.initProfilePage(user);
+        controller.initProfilePage(user, "../tinCAR/src/main/resources/announcements.json");
 
         //Adding logo
         window.setTitle("tinCAR - The place to find your new car");
@@ -326,5 +326,9 @@ public class AddAnnouncementController {
         window.close();
         window.setScene(page);
         window.show();
+    }
+
+    public User getUser(){
+        return this.user;
     }
 }

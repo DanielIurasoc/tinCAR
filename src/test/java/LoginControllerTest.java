@@ -11,7 +11,7 @@ import org.testfx.framework.junit.ApplicationTest;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class LoginControllerTest extends ApplicationTest {
 
@@ -30,14 +30,6 @@ public class LoginControllerTest extends ApplicationTest {
         controller.usernameField = new TextField();
         controller.passwordField = new PasswordField();
         controller.loginMessage = new Text();
-    }
-
-    @Test
-    public void testHandleLoginButtonWithCorrectAccount() throws IOException {
-        controller.passwordField.setText("pass2");
-        controller.usernameField.setText("jfabian");
-        controller.handleLoginButton();
-        assertEquals("Login successfully", controller.loginMessage.getText());
     }
 
     @Test

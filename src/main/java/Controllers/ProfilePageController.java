@@ -63,7 +63,7 @@ public class ProfilePageController {
     private User user;
     private JSONArray announcements = new JSONArray();
 
-    public void initProfilePage(User account){
+    public void initProfilePage(User account, String path){
         accountUsernameLabel.setText(account.getUsername());
         profileButton.setStyle("-fx-background-color: #005934");
         this.user = account;
@@ -79,7 +79,7 @@ public class ProfilePageController {
         this.cityLabel.setText(user.getCity());
 
         try { // load announcements from file
-            announcements = AnnouncementService.getAnnouncements("../tinCAR/src/main/resources/announcements.json");
+            announcements = AnnouncementService.getAnnouncements(path);
         }catch(IOException e) {
             System.out.println("IO Exception !");
         }catch(ParseException e){
@@ -103,7 +103,7 @@ public class ProfilePageController {
                 picture.setLayoutY(10);
                 picture.setPrefWidth(250);
                 picture.setPrefHeight(180);
-                picture.setStyle("-fx-background-image: url(" + "carPictures" + "/" + announcement.getPicture() + ")");/////////////////////
+                picture.setStyle("-fx-background-image: url(" + "carPictures" + "/" + announcement.getPicture() + ")");
 
                 // Title
                 Label title = new Label(announcement.getTitle());
@@ -240,7 +240,7 @@ public class ProfilePageController {
             file.close();
 
             // Reinitialize the profile page
-            initProfilePage(user);
+            initProfilePage(user, "../tinCAR/src/main/resources/announcements.json");
         }
     }
 
@@ -281,16 +281,16 @@ public class ProfilePageController {
         successLabel.setText("Profile edited successfully !");
     }
 
-    public void handleMainPageButton(ActionEvent actionEvent) throws IOException {
+    public void handleMainPageButton() throws IOException {
         //Get window
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage window = (Stage)mainPageButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/MainPage.fxml"));
         Parent profileParent = loader.load();
         Scene page = new Scene(profileParent, 1200, 800);
         page.getStylesheets().add("/pageStyle.css");
         MainPageController controller = loader.getController();
-        controller.initMainPage(user);
+        controller.initMainPage(user, "../tinCAR/src/main/resources/announcements.json");
 
         //Adding logo
         window.setTitle("tinCAR - The place to find your new car");
@@ -303,7 +303,7 @@ public class ProfilePageController {
     }
 
     public void handleProfileButton(){
-        initProfilePage(user);
+        initProfilePage(user, "../tinCAR/src/main/resources/announcements.json");
     }
 
     public void handleAddButton(ActionEvent actionEvent) throws IOException {
@@ -341,5 +341,13 @@ public class ProfilePageController {
         window.close();
         window.setScene(page);
         window.show();
+    }
+
+    public User getUser(){
+        return this.user;
+    }
+
+    public JSONArray getAnnouncements(){
+        return this.announcements;
     }
 }
