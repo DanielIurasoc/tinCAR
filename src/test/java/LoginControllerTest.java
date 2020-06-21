@@ -11,7 +11,7 @@ import org.testfx.framework.junit.ApplicationTest;
 
 import java.io.IOException;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class LoginControllerTest extends ApplicationTest {
 
@@ -19,12 +19,12 @@ public class LoginControllerTest extends ApplicationTest {
 
     @BeforeClass
     public static void setupClass() throws Exception {
-        UserService.loadUsersFromFile("../tinCAR/src/test/resources/users.json");
+        UserService.loadUsersFromFile();
     }
 
     @Before
     public void setUp() throws IOException, ParseException {
-        UserService.loadUsersFromFile("../tinCAR/src/test/resources/users.json");
+        UserService.loadUsersFromFile();
 
         controller = new LoginController();
         controller.usernameField = new TextField();

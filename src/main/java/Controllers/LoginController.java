@@ -53,10 +53,10 @@ public class LoginController {
             //Pass the account
             if(user.getRole().equals("user")) {
                 MainPageController controller = loader.getController();
-                controller.initMainPage(user, "../tinCAR/src/main/resources/announcements.json");
+                controller.initMainPage(user);
             }else if(user.getRole().equals("admin")){
                 ValidatePageController controller = loader.getController();
-                controller.initValidatePage(user, "../tinCAR/src/main/resources/announcements.json");
+                controller.initValidatePage(user);
             }
 
             //Adding logo

@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class AnnouncementServiceTest {
     @Test
     public void getAnnouncementsTest() throws IOException, ParseException {
-        JSONArray announcements = AnnouncementService.getAnnouncements("../tinCAR/src/test/resources/announcements.json");
+        JSONArray announcements = AnnouncementService.getAnnouncements();
         JSONObject x;
 
         x = (JSONObject) announcements.get(0);
@@ -25,9 +25,5 @@ public class AnnouncementServiceTest {
         x = (JSONObject) announcements.get(2);
         assertEquals("jfabian", x.get("owner"));
         assertEquals("0734 159 950", x.get("phone"));
-
-        x = (JSONObject) announcements.get(3);
-        assertEquals("jfabian", x.get("owner"));
-        assertEquals("0784 500 300", x.get("phone"));
     }
 }

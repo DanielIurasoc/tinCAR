@@ -63,7 +63,7 @@ public class ProfilePageController {
     private User user;
     private JSONArray announcements = new JSONArray();
 
-    public void initProfilePage(User account, String path){
+    public void initProfilePage(User account){
         accountUsernameLabel.setText(account.getUsername());
         profileButton.setStyle("-fx-background-color: #005934");
         this.user = account;
@@ -79,7 +79,7 @@ public class ProfilePageController {
         this.cityLabel.setText(user.getCity());
 
         try { // load announcements from file
-            announcements = AnnouncementService.getAnnouncements(path);
+            announcements = AnnouncementService.getAnnouncements();
         }catch(IOException e) {
             System.out.println("IO Exception !");
         }catch(ParseException e){
@@ -240,7 +240,7 @@ public class ProfilePageController {
             file.close();
 
             // Reinitialize the profile page
-            initProfilePage(user, "../tinCAR/src/main/resources/announcements.json");
+            initProfilePage(user);
         }
     }
 
@@ -277,7 +277,7 @@ public class ProfilePageController {
         file.close();
 
         // actualize data with all users in case we switch account
-        UserService.loadUsersFromFile("../tinCAR/src/main/resources/users.json");
+        UserService.loadUsersFromFile();
         successLabel.setText("Profile edited successfully !");
     }
 
@@ -290,7 +290,7 @@ public class ProfilePageController {
         Scene page = new Scene(profileParent, 1200, 800);
         page.getStylesheets().add("/pageStyle.css");
         MainPageController controller = loader.getController();
-        controller.initMainPage(user, "../tinCAR/src/main/resources/announcements.json");
+        controller.initMainPage(user);
 
         //Adding logo
         window.setTitle("tinCAR - The place to find your new car");
@@ -303,7 +303,7 @@ public class ProfilePageController {
     }
 
     public void handleProfileButton(){
-        initProfilePage(user, "../tinCAR/src/main/resources/announcements.json");
+        initProfilePage(user);
     }
 
     public void handleAddButton(ActionEvent actionEvent) throws IOException {

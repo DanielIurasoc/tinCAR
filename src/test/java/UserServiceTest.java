@@ -14,7 +14,7 @@ public class UserServiceTest {
 
     @Before
     public void setUp() throws IOException, ParseException {
-        UserService.loadUsersFromFile("../tinCAR/src/test/resources/users.json");
+        UserService.loadUsersFromFile();
     }
 
     @Test

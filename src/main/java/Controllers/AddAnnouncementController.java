@@ -202,7 +202,7 @@ public class AddAnnouncementController {
 
             //Get older announcements and add new announcement to the array
             JSONArray array;
-            array = AnnouncementService.getAnnouncements("../tinCAR/src/main/resources/announcements.json");
+            array = AnnouncementService.getAnnouncements();
             array.add(newAnnouncement);
 
             // Write to file the announcements updated
@@ -234,7 +234,7 @@ public class AddAnnouncementController {
                 Parent profileParent = loader.load();
                 Scene page = new Scene(profileParent, 1200, 800);
                 ProfilePageController controller = loader.getController();
-                controller.initProfilePage(user, "../tinCAR/src/main/resources/announcements.json");
+                controller.initProfilePage(user);
 
                 //Adding logo
                 window.setTitle("tinCAR - The place to find your new car");
@@ -275,7 +275,7 @@ public class AddAnnouncementController {
         Scene page = new Scene(profileParent, 1200, 800);
         page.getStylesheets().add("/pageStyle.css");
         MainPageController controller = loader.getController();
-        controller.initMainPage(user, "../tinCAR/src/main/resources/announcements.json");
+        controller.initMainPage(user);
 
         //Adding logo
         window.setTitle("tinCAR - The place to find your new car");
@@ -295,7 +295,7 @@ public class AddAnnouncementController {
         Parent profileParent = loader.load();
         Scene page = new Scene(profileParent, 1200, 800);
         ProfilePageController controller = loader.getController();
-        controller.initProfilePage(user, "../tinCAR/src/main/resources/announcements.json");
+        controller.initProfilePage(user);
 
         //Adding logo
         window.setTitle("tinCAR - The place to find your new car");

@@ -43,7 +43,7 @@ public class ValidatePageController {
     private JSONArray announcements = new JSONArray();
     private User user;
 
-    public void initValidatePage(User account, String path){
+    public void initValidatePage(User account){
         this.accountUsernameLabel.setText(account.getUsername());
         this.user = account;
         ValidatePageButton.setStyle("-fx-background-color: #005934");
@@ -51,7 +51,7 @@ public class ValidatePageController {
 
         // load announcements from file
         try {
-            announcements = AnnouncementService.getAnnouncements(path);
+            announcements = AnnouncementService.getAnnouncements();
         }catch(IOException e) {
             System.out.println("IO Exception !");
         }catch(ParseException e){
@@ -195,7 +195,7 @@ public class ValidatePageController {
 
         //reload announcements with updated changes
         try {
-            announcements = AnnouncementService.getAnnouncements("../tinCAR/src/main/resources/announcements.json");
+            announcements = AnnouncementService.getAnnouncements();
         }catch(IOException ex) {
             System.out.println("IO Exception !");
         }catch(ParseException ex){
@@ -216,7 +216,7 @@ public class ValidatePageController {
         // If OK button is pressed reload page
         if (result.isPresent() && result.get() == ButtonType.OK) {
             //reload Validate Page with updated announcements
-            initValidatePage(user, "../tinCAR/src/main/resources/announcements.json");
+            initValidatePage(user);
         }
     }
 
@@ -269,7 +269,7 @@ public class ValidatePageController {
 
             //reload announcements with updated changes
             try {
-                announcements = AnnouncementService.getAnnouncements("../tinCAR/src/main/resources/announcements.json");
+                announcements = AnnouncementService.getAnnouncements();
             }catch(IOException ex) {
                 System.out.println("IO Exception !");
             }catch(ParseException ex){
@@ -277,7 +277,7 @@ public class ValidatePageController {
             }
 
             //reload Validate Page with updated announcements
-            initValidatePage(user, "../tinCAR/src/main/resources/announcements.json");
+            initValidatePage(user);
         }
     }
 
@@ -310,7 +310,7 @@ public class ValidatePageController {
         Parent profileParent = loader.load();
         Scene page = new Scene(profileParent, 1200, 800);
         MainPageController controller = loader.getController();
-        controller.initMainPage(user, "../tinCAR/src/main/resources/announcements.json");
+        controller.initMainPage(user);
         page.getStylesheets().add("/pageStyle.css");
 
         //Adding logo
@@ -324,7 +324,7 @@ public class ValidatePageController {
     }
 
     public void handleValidatePageButton(){
-        initValidatePage(user, "../tinCAR/src/main/resources/announcements.json");
+        initValidatePage(user);
     }
 
     public void handleLogoutButton(ActionEvent actionEvent) throws IOException {

@@ -27,10 +27,10 @@ public class ValidatePageControllerTest extends ApplicationTest {
     @Test
     public void initValidatePageTest(){
         User u = new User("jfabian","pass2","user","0256129943","Costel", "Bucuresti");
-        validatePageController.initValidatePage(u,"../tinCAR/src/test/resources/announcements.json");
+        validatePageController.initValidatePage(u);
         assertEquals("jfabian", validatePageController.accountUsernameLabel.getText());
         assertEquals(u, validatePageController.getUser());
-        assertEquals(4, validatePageController.getAnnouncements().size());
-        assertEquals(1, ((VBox)validatePageController.announcementsList.getContent()).getChildren().size());
+        assertEquals(15, validatePageController.getAnnouncements().size());
+        assertEquals(9, ((VBox)validatePageController.announcementsList.getContent()).getChildren().size());
     }
 }

@@ -35,14 +35,14 @@ public class ProfilePageControllerTest extends ApplicationTest {
     @Test
     public void initProfilePageTest(){
         User u = new User("jfabian","pass2","user","0256129943","Costel", "Bucuresti");
-        profilePageController.initProfilePage(u,"../tinCAR/src/test/resources/announcements.json");
+        profilePageController.initProfilePage(u);
         assertEquals("jfabian", profilePageController.accountUsernameLabel.getText());
         assertEquals(u, profilePageController.getUser());
         assertEquals(u.getFull_name(), profilePageController.nameLabel.getText());
         assertEquals(u.getPhone(), profilePageController.phoneLabel.getText());
         assertEquals(u.getCity(), profilePageController.cityLabel.getText());
-        assertEquals(4, profilePageController.getAnnouncements().size());
+        assertEquals(15, profilePageController.getAnnouncements().size());
         // -1 to listOfItems size because first item is information Area ( there are 1 + number of announcements items )
-        assertEquals(3, profilePageController.listOfItems.getChildren().size() - 1);
+        assertEquals(6, profilePageController.listOfItems.getChildren().size() - 1);
     }
 }

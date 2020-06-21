@@ -29,9 +29,9 @@ public class MainPageControllerTest extends ApplicationTest {
 
         User u = new User("jfabian","pass2","user","0256129943","Costel", "Bucuresti");
 
-        mainPageController.initMainPage(u, "../tinCAR/src/test/resources/announcements.json");
+        mainPageController.initMainPage(u);
         // we have 4 announcements in json so the size of the array should be 4
-        assertEquals(4, mainPageController.getAnnouncements().size());
+        assertEquals(15, mainPageController.getAnnouncements().size());
         assertEquals(u, mainPageController.getUser());
         assertEquals("jfabian", mainPageController.accountUsernameLabel.getText());
         assertFalse(mainPageController.ValidatePageButton.isVisible());
@@ -44,9 +44,9 @@ public class MainPageControllerTest extends ApplicationTest {
 
         User u = new User("admin","pass1","admin","0256129943","Costel", "Bucuresti");
 
-        mainPageController.initMainPage(u, "../tinCAR/src/test/resources/announcements.json");
+        mainPageController.initMainPage(u);
         // we have 4 announcements in json so the size of the array should be 4
-        assertEquals(4, mainPageController.getAnnouncements().size());
+        assertEquals(15, mainPageController.getAnnouncements().size());
         assertEquals(u, mainPageController.getUser());
         assertEquals("admin", mainPageController.accountUsernameLabel.getText());
         assertTrue(mainPageController.ValidatePageButton.isVisible());

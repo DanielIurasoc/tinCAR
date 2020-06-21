@@ -44,13 +44,13 @@ public class MainPageController {
     private JSONArray announcements = new JSONArray();
     private User user;
 
-    public void initMainPage(User account, String path){
+    public void initMainPage(User account){
         this.accountUsernameLabel.setText(account.getUsername());
         this.user = account;
         mainPageButton.setStyle("-fx-background-color: #005934");
 
         try { // load announcements from file
-            announcements = AnnouncementService.getAnnouncements(path);
+            announcements = AnnouncementService.getAnnouncements();
         }catch(IOException e) {
             System.out.println("IO Exception !");
         }catch(ParseException e){
@@ -131,7 +131,7 @@ public class MainPageController {
                     deleteAnnouncement.getStyleClass().add("deleteButton");
                     deleteAnnouncement.setOnAction(e -> {
                         try {
-                            handleDeleteButton(announcement, path);
+                            handleDeleteButton(announcement);
                         } catch (IOException ioException) {
                             ioException.printStackTrace();
                         }
@@ -150,7 +150,7 @@ public class MainPageController {
         this.announcementsList.setContent(vbox);
     }
 
-    public void handleDeleteButton(Announcement announcement, String path) throws IOException {
+    public void handleDeleteButton(Announcement announcement) throws IOException {
         JSONArray newListOfAnnouncements = new JSONArray();
 
         // Add to the new list all elements except the one with same title, owner and price(the one we want to delete)
@@ -174,13 +174,13 @@ public class MainPageController {
         // If yes button is pressed then the announcement is gone
         if (result.isPresent() && result.get() == ButtonType.YES) {
             // Write to the file the new announcements list
-            FileWriter file = new FileWriter(path);
+            FileWriter file = new FileWriter("../tinCAR/src/main/resources/users.json");
             file.write(newListOfAnnouncements.toJSONString());
             file.flush();
             file.close();
 
             // Reinitialize the Main page
-            initMainPage(user, path);
+            initMainPage(user);
         }
     }
 
@@ -206,7 +206,7 @@ public class MainPageController {
     }
 
     public void handleMainPageButton() {
-        initMainPage(user, "../tinCAR/src/main/resources/announcements.json");
+        initMainPage(user);
     }
 
     public void handleProfileButton() throws IOException {
@@ -217,7 +217,7 @@ public class MainPageController {
         Parent profileParent = loader.load();
         Scene page = new Scene(profileParent, 1200, 800);
         ProfilePageController controller = loader.getController();
-        controller.initProfilePage(user, "../tinCAR/src/main/resources/announcements.json");
+        controller.initProfilePage(user);
 
         //Adding logo
         window.setTitle("tinCAR - The place to find your new car");
@@ -257,7 +257,7 @@ public class MainPageController {
         Parent profileParent = loader.load();
         Scene page = new Scene(profileParent, 1200, 800);
         ValidatePageController controller = loader.getController();
-        controller.initValidatePage(user, "../tinCAR/src/main/resources/announcements.json");
+        controller.initValidatePage(user);
 
         //Adding logo
         window.setTitle("tinCAR - The place to find your new car");

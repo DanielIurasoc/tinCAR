@@ -11,21 +11,21 @@ public class AnnouncementService {
 
     private static JSONArray announcements = new JSONArray();
 
-    private static void loadAnnouncementsFromFile(String path) throws IOException, ParseException {
+    private static void loadAnnouncementsFromFile() throws IOException, ParseException {
 
         // JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
 
-        FileReader reader = new FileReader(path);
+        FileReader reader = new FileReader("../tinCAR/src/main/resources/announcements.json");
         // Read JSON file
         Object obj = jsonParser.parse(reader);
 
         announcements = (JSONArray) obj;
     }
 
-    public static JSONArray getAnnouncements(String path) throws IOException, ParseException {
+    public static JSONArray getAnnouncements() throws IOException, ParseException {
         announcements.clear();
-        loadAnnouncementsFromFile(path);
+        loadAnnouncementsFromFile();
         return announcements;
     }
 

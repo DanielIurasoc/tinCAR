@@ -81,7 +81,7 @@ public class ViewDetailsController {
 
         //Get controller
         MainPageController controller = loader.getController();
-        controller.initMainPage(user, "../tinCAR/src/main/resources/announcements.json");
+        controller.initMainPage(user);
         page.getStylesheets().add("/pageStyle.css");
 
         //Adding logo
