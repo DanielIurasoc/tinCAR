@@ -4,11 +4,9 @@ import Model.Announcement;
 import Model.User;
 import Services.AnnouncementService;
 import Services.UserService;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -23,6 +21,8 @@ import org.json.simple.parser.ParseException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Optional;
+
+@SuppressWarnings("unchecked")
 
 public class MainPageController {
 
@@ -41,7 +41,6 @@ public class MainPageController {
     @FXML
     public ScrollPane announcementsList;
 
-    //private ArrayList<Announcement> announcements = new ArrayList<>();
     private JSONArray announcements = new JSONArray();
     private User user;
 
@@ -112,7 +111,7 @@ public class MainPageController {
                 viewDetails.getStyleClass().add("viewDetailsButton");
                 viewDetails.setOnAction(e -> {
                     try {
-                        handleDetailsButton(e, announcement);
+                        handleDetailsButton(announcement);
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
                     }
@@ -132,7 +131,7 @@ public class MainPageController {
                     deleteAnnouncement.getStyleClass().add("deleteButton");
                     deleteAnnouncement.setOnAction(e -> {
                         try {
-                            handleDeleteButton(e, announcement);
+                            handleDeleteButton(announcement);
                         } catch (IOException ioException) {
                             ioException.printStackTrace();
                         }
@@ -151,7 +150,7 @@ public class MainPageController {
         this.announcementsList.setContent(vbox);
     }
 
-    private void handleDeleteButton(ActionEvent e, Announcement announcement) throws IOException {
+    public void handleDeleteButton(Announcement announcement) throws IOException {
         JSONArray newListOfAnnouncements = new JSONArray();
 
         // Add to the new list all elements except the one with same title, owner and price(the one we want to delete)
@@ -175,7 +174,7 @@ public class MainPageController {
         // If yes button is pressed then the announcement is gone
         if (result.isPresent() && result.get() == ButtonType.YES) {
             // Write to the file the new announcements list
-            FileWriter file = new FileWriter("../tinCAR/src/main/resources/announcements.json");
+            FileWriter file = new FileWriter("../tinCAR/src/main/resources/users.json");
             file.write(newListOfAnnouncements.toJSONString());
             file.flush();
             file.close();
@@ -185,9 +184,9 @@ public class MainPageController {
         }
     }
 
-    private void handleDetailsButton(ActionEvent actionEvent, Announcement announcement) throws IOException {
+    public void handleDetailsButton(Announcement announcement) throws IOException {
         //Get window
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage window = (Stage)mainPageButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/ViewDetailsPage.fxml"));
         Parent detailsParent = loader.load();
@@ -210,9 +209,9 @@ public class MainPageController {
         initMainPage(user);
     }
 
-    public void handleProfileButton(ActionEvent actionEvent) throws IOException {
+    public void handleProfileButton() throws IOException {
         //Get window
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage window = (Stage)mainPageButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/ProfilePage.fxml"));
         Parent profileParent = loader.load();
@@ -230,9 +229,9 @@ public class MainPageController {
         window.show();
     }
 
-    public void handleAddButton(ActionEvent actionEvent) throws IOException {
+    public void handleAddButton() throws IOException {
         //Get window
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage window = (Stage)mainPageButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/addAnnouncement.fxml"));
         Parent profileParent = loader.load();
@@ -250,9 +249,9 @@ public class MainPageController {
         window.show();
     }
 
-    public void handleValidatePageButton(ActionEvent actionEvent) throws IOException {
+    public void handleValidatePageButton() throws IOException {
         //Get window
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage window = (Stage)mainPageButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/AdminValidatePage.fxml"));
         Parent profileParent = loader.load();
@@ -270,9 +269,9 @@ public class MainPageController {
         window.show();
     }
 
-    public void handleLogoutButton(ActionEvent actionEvent) throws IOException {
+    public void handleLogoutButton() throws IOException {
         //Get window
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage window = (Stage)mainPageButton.getScene().getWindow();
         //Create scene
         Parent loginParent = FXMLLoader.load(getClass().getResource("/login.fxml"));
         Scene page = new Scene(loginParent, 800, 500);
@@ -285,5 +284,13 @@ public class MainPageController {
         window.close();
         window.setScene(page);
         window.show();
+    }
+
+    public JSONArray getAnnouncements(){
+        return this.announcements;
+    }
+
+    public User getUser(){
+        return this.user;
     }
 }

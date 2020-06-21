@@ -160,7 +160,7 @@ public class AddAnnouncementController {
             // Get fuel type, make verifications, throw exception if needed or set field if everything is in order
             String fuelTypeField = this.fuelType.getValue();
             if(fuelTypeField == null || fuelTypeField.isEmpty()){
-                throw new fuelTypeFieldMandatoryException(" is mandatory !");
+                throw new fuelTypeFieldMandatoryException("Fuel type is mandatory !");
             } else {
                 newAnnouncement.put("Fuel type", fuelTypeField);
             }
@@ -326,5 +326,9 @@ public class AddAnnouncementController {
         window.close();
         window.setScene(page);
         window.show();
+    }
+
+    public User getUser(){
+        return this.user;
     }
 }

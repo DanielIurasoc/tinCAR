@@ -3,10 +3,8 @@ package Controllers;
 import Exceptions.UsernameOrPasswordDoesNotExistException;
 import Model.User;
 import Services.UserService;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -30,14 +28,14 @@ public class LoginController {
     @FXML
     public TextField usernameField;
 
-    public void handleLoginButton(ActionEvent actionEvent) throws IOException {
+    public void handleLoginButton() throws IOException {
 
         try {
             // Check credentials and get the role of the account
             User user = UserService.checkCredentials(usernameField.getText(), Base64.getEncoder().encodeToString((passwordField.getText()).getBytes()));
 
             // Get the stage window where other scene is showed
-            Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            Stage window = (Stage)LoginButton.getScene().getWindow();
 
             FXMLLoader loader = new FXMLLoader();
 

@@ -26,6 +26,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Optional;
 
+@SuppressWarnings("unchecked")
+
 public class ValidatePageController {
     @FXML
     public Button mainPageButton;
@@ -96,8 +98,6 @@ public class ValidatePageController {
 
                 // Add elements to announcement pane ( for both user and administrator )
                 announcementPane.getChildren().addAll(picture, title, price);
-                //announcementPane.getChildren().add(title);
-                //announcementPane.getChildren().add(price);
 
                 // View Details Button
                 Button viewDetails = new Button("View Details");
@@ -126,7 +126,7 @@ public class ValidatePageController {
                 acceptAnnouncement.getStyleClass().add("acceptButton");
                 acceptAnnouncement.setOnAction(e -> {
                     try {
-                        handleAcceptButton(e, announcement);
+                        handleAcceptButton(announcement);
                     } catch (IOException | ParseException ioException) {
                         ioException.printStackTrace();
                     }
@@ -144,7 +144,7 @@ public class ValidatePageController {
                 denyAnnouncement.getStyleClass().add("denyButton");
                 denyAnnouncement.setOnAction(e -> {
                     try {
-                        handleDenyButton(e, announcement);
+                        handleDenyButton(announcement);
                     } catch (IOException | ParseException ioException) {
                         ioException.printStackTrace();
                     }
@@ -166,7 +166,7 @@ public class ValidatePageController {
 
     }
 
-    private void handleAcceptButton(ActionEvent e, Announcement announcement) throws IOException, ParseException {
+    private void handleAcceptButton(Announcement announcement) throws IOException, ParseException {
         // JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
 
@@ -220,7 +220,7 @@ public class ValidatePageController {
         }
     }
 
-    private void handleDenyButton(ActionEvent e, Announcement announcement) throws IOException, ParseException {
+    private void handleDenyButton(Announcement announcement) throws IOException, ParseException {
         String reasonOfDenial;
 
         // create a text input dialog
@@ -302,9 +302,9 @@ public class ValidatePageController {
         window.show();
     }
 
-    public void handleMainPageButton(ActionEvent actionEvent) throws IOException {
+    public void handleMainPageButton() throws IOException {
         //Get window
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage window = (Stage)mainPageButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/MainPage.fxml"));
         Parent profileParent = loader.load();
@@ -342,5 +342,13 @@ public class ValidatePageController {
         window.close();
         window.setScene(page);
         window.show();
+    }
+
+    public User getUser(){
+        return this.user;
+    }
+
+    public JSONArray getAnnouncements(){
+        return this.announcements;
     }
 }

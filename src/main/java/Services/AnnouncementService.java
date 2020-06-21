@@ -1,6 +1,5 @@
 package Services;
 
-import Model.Announcement;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;

@@ -103,7 +103,7 @@ public class ProfilePageController {
                 picture.setLayoutY(10);
                 picture.setPrefWidth(250);
                 picture.setPrefHeight(180);
-                picture.setStyle("-fx-background-image: url(" + "carPictures" + "/" + announcement.getPicture() + ")");/////////////////////
+                picture.setStyle("-fx-background-image: url(" + "carPictures" + "/" + announcement.getPicture() + ")");
 
                 // Title
                 Label title = new Label(announcement.getTitle());
@@ -281,9 +281,9 @@ public class ProfilePageController {
         successLabel.setText("Profile edited successfully !");
     }
 
-    public void handleMainPageButton(ActionEvent actionEvent) throws IOException {
+    public void handleMainPageButton() throws IOException {
         //Get window
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage window = (Stage)mainPageButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/MainPage.fxml"));
         Parent profileParent = loader.load();
@@ -341,5 +341,13 @@ public class ProfilePageController {
         window.close();
         window.setScene(page);
         window.show();
+    }
+
+    public User getUser(){
+        return this.user;
+    }
+
+    public JSONArray getAnnouncements(){
+        return this.announcements;
     }
 }

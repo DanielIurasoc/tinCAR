@@ -1,18 +1,17 @@
 package Model;
-//"owner","status","title","description","Fuel type","Transmission",
-// "Kilometres","First Registration","picture","phone"
+
 public class Announcement {
-    private String owner;
-    private String status;
-    private String price;
-    private String title;
-    private String description;
-    private String fuel_type;
-    private String transmission;
-    private String kilometres;
-    private String first_registration;
-    private String picture;
-    private String phone_number;
+    private final String owner;
+    private final String status;
+    private final String price;
+    private final String title;
+    private final String description;
+    private final String fuel_type;
+    private final String transmission;
+    private final String kilometres;
+    private final String first_registration;
+    private final String picture;
+    private final String phone_number;
 
     public Announcement(String owner, String status, String price, String title, String description, String fuel_type,String transmission, String kilometres, String first_registration, String picture, String phone_number){
         this.owner = owner;
@@ -49,32 +48,5 @@ public class Announcement {
     public String getPicture() { return picture; }
 
     public String getPhone_number() { return phone_number; }
-
-    public boolean equals(Object o){
-        if(o instanceof Announcement ){
-            Announcement add = (Announcement)o;
-            if(!add.getPrice().equals(this.getPrice()))
-                return false;
-            if(!add.getOwner().equals(this.getOwner()))
-                return false;
-            if(!add.getStatus().equals(this.getStatus()))
-                return false;
-            if(!add.getTitle().equals(this.getTitle()))
-                return false;
-            if(!add.getFuel_type().equals(this.getFuel_type()))
-                return false;
-            if(!add.getTransmission().equals(this.getTransmission()))
-                return false;
-            if(!add.getKilometres().equals(this.getKilometres()))
-                return false;
-            if(!add.getFirst_registration().equals(this.getFirst_registration()))
-                return false;
-            if(!add.getPicture().equals(this.getPicture()))
-                return false;
-            if(!add.getPhone_number().equals(this.getPhone_number()))
-                return false;
-        }
-        return true;
-    }
 
 }
